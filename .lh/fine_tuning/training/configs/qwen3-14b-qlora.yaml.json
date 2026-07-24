@@ -1,0 +1,46 @@
+{
+    "sourceFile": "fine_tuning/training/configs/qwen3-14b-qlora.yaml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1784904042206,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1784904049023,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,11 +32,11 @@\n iters: 4800\n \n # Memoria e batch.\n batch_size: 2\n-grad_accumulation_steps: 8\n+grad_accumulation_steps: 4\n max_seq_length: 3072\n-grad_checkpoint: true\n+grad_checkpoint: false\n \n # Qwen3-14B è dense: adattiamo gli ultimi 24 layer.\n num_layers: 24\n \n"
+                },
+                {
+                    "date": 1784904080637,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n learning_rate: 1.0e-5\n \n # Il dataset contiene 2.400 esempi.\n # 4.800 iterazioni corrispondono a due passaggi nominali sui micro-batch\n-# con batch_size 1; la selezione finale dipenderà comunque dagli eval.\n+# con batch_size 2; la selezione finale dipenderà comunque dagli eval.\n iters: 4800\n \n # Memoria e batch.\n batch_size: 2\n"
+                },
+                {
+                    "date": 1784904100105,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n \n # Il dataset contiene 2.400 esempi.\n # 4.800 iterazioni corrispondono a due passaggi nominali sui micro-batch\n # con batch_size 2; la selezione finale dipenderà comunque dagli eval.\n-iters: 4800\n+iters: 50\n \n # Memoria e batch.\n batch_size: 2\n grad_accumulation_steps: 4\n"
+                },
+                {
+                    "date": 1784904109282,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -45,9 +45,9 @@\n \n # Validazione e logging.\n val_batches: 50\n steps_per_report: 10\n-steps_per_eval: 200\n+steps_per_eval: 0\n \n # Adapter e checkpoint.\n adapter_path: \"models/adapters/qwen3-14b-lolai-v1.0.0\"\n resume_adapter_file: null\n"
+                },
+                {
+                    "date": 1784904522188,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n # con batch_size 2; la selezione finale dipenderà comunque dagli eval.\n iters: 50\n \n # Memoria e batch.\n-batch_size: 2\n+batch_size: 4\n grad_accumulation_steps: 4\n max_seq_length: 3072\n grad_checkpoint: false\n \n@@ -45,14 +45,14 @@\n \n # Validazione e logging.\n val_batches: 50\n steps_per_report: 10\n-steps_per_eval: 0\n+steps_per_eval: 50\n \n # Adapter e checkpoint.\n adapter_path: \"models/adapters/qwen3-14b-lolai-v1.0.0\"\n resume_adapter_file: null\n-save_every: 400\n+save_every: 50\n \n # Il test set resta isolato fino al congelamento del modello candidato.\n test: false\n test_batches: -1\n"
+                },
+                {
+                    "date": 1784904901486,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,13 +27,13 @@\n learning_rate: 1.0e-5\n \n # Il dataset contiene 2.400 esempi.\n # 4.800 iterazioni corrispondono a due passaggi nominali sui micro-batch\n-# con batch_size 2; la selezione finale dipenderà comunque dagli eval.\n-iters: 50\n+# con batch_size 1; la selezione finale dipenderà comunque dagli eval.\n+iters: 4800\n \n # Memoria e batch.\n-batch_size: 4\n+batch_size: 2\n grad_accumulation_steps: 4\n max_seq_length: 3072\n grad_checkpoint: false\n \n@@ -45,14 +45,14 @@\n \n # Validazione e logging.\n val_batches: 50\n steps_per_report: 10\n-steps_per_eval: 50\n+steps_per_eval: 200\n \n # Adapter e checkpoint.\n adapter_path: \"models/adapters/qwen3-14b-lolai-v1.0.0\"\n resume_adapter_file: null\n-save_every: 50\n+save_every: 400\n \n # Il test set resta isolato fino al congelamento del modello candidato.\n test: false\n test_batches: -1\n"
+                },
+                {
+                    "date": 1784904908102,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,10 +31,10 @@\n # con batch_size 1; la selezione finale dipenderà comunque dagli eval.\n iters: 4800\n \n # Memoria e batch.\n-batch_size: 2\n-grad_accumulation_steps: 4\n+batch_size: 4\n+grad_accumulation_steps: 2\n max_seq_length: 3072\n grad_checkpoint: false\n \n # Qwen3-14B è dense: adattiamo gli ultimi 24 layer.\n"
+                }
+            ],
+            "date": 1784904042206,
+            "name": "Commit-0",
+            "content": "# LOLAI Advisor — Qwen3-14B QLoRA\n# Eseguire dalla root del repository con:\n#   mlx_lm.lora --config training/configs/qwen3-14b-qlora.yaml\n#\n# Prerequisiti:\n#   models/base/qwen3-14b-4bit/\n#   datasets/releases/1.0.0/train.jsonl\n#   datasets/releases/1.0.0/valid.jsonl\n#\n# test.jsonl e challenge.jsonl NON vengono usati durante il training.\n\n# Modello MLX quantizzato: usando un modello quantizzato, MLX-LM esegue QLoRA.\nmodel: \"models/base/qwen3-14b-4bit\"\n\n# Modalità training.\ntrain: true\nfine_tune_type: \"lora\"\n\n# Dataset locale contenente train.jsonl e valid.jsonl.\ndata: \"datasets/releases/1.0.0\"\n\n# Riproducibilità.\nseed: 42\n\n# Ottimizzatore.\noptimizer: \"adamw\"\nlearning_rate: 1.0e-5\n\n# Il dataset contiene 2.400 esempi.\n# 4.800 iterazioni corrispondono a due passaggi nominali sui micro-batch\n# con batch_size 1; la selezione finale dipenderà comunque dagli eval.\niters: 4800\n\n# Memoria e batch.\nbatch_size: 2\ngrad_accumulation_steps: 8\nmax_seq_length: 3072\ngrad_checkpoint: true\n\n# Qwen3-14B è dense: adattiamo gli ultimi 24 layer.\nnum_layers: 24\n\n# Calcola la loss soltanto sulla risposta assistant finale.\nmask_prompt: true\n\n# Validazione e logging.\nval_batches: 50\nsteps_per_report: 10\nsteps_per_eval: 200\n\n# Adapter e checkpoint.\nadapter_path: \"models/adapters/qwen3-14b-lolai-v1.0.0\"\nresume_adapter_file: null\nsave_every: 400\n\n# Il test set resta isolato fino al congelamento del modello candidato.\ntest: false\ntest_batches: -1\n\n# Layer lineari sui quali applicare LoRA.\nlora_parameters:\n  keys:\n    - \"self_attn.q_proj\"\n    - \"self_attn.k_proj\"\n    - \"self_attn.v_proj\"\n    - \"self_attn.o_proj\"\n  rank: 16\n  scale: 32.0\n  dropout: 0.05\n"
+        }
+    ]
+}

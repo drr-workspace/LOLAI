@@ -1,0 +1,12 @@
+============================================================
+ LOLAI Advisor — Qwen3-14B QLoRA
+============================================================
+Run ID:       20260724-162325
+Avvio:        2026-07-24 16:23:25 CEST
+Root:         /Users/raffaele.deraffaele/Documents/Repos/DRR/LOLAI/fine_tuning
+Config:       training/configs/qwen3-14b-qlora.yaml
+Dataset:      datasets/releases/1.0.0
+Modello:      models/base/qwen3-14b-4bit
+Log completo: training/logs/20260724-162325/full.log
+============================================================
+ERRORE: cartella mancante: models/base/qwen3-14b-4bit

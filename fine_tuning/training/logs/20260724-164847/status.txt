@@ -1,0 +1,8 @@
+state=INTERRUPTED
+run_id=20260724-164847
+updated_at=2026-07-24T14:54:45Z
+detail=Training interrotto con codice 130
+log=training/logs/20260724-164847/full.log
+config=training/configs/qwen3-14b-qlora.yaml
+data=datasets/releases/1.0.0
+model=models/base/qwen3-14b-4bit

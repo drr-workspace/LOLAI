@@ -1,0 +1,108 @@
+{
+  "datasetDirectory": "/Users/raffaele.deraffaele/Documents/Repos/DRR/LOLAI/fine_tuning/datasets/releases/1.0.0",
+  "valid": true,
+  "splits": {
+    "train": {
+      "examples": 2400,
+      "tasks": {
+        "ADVICE_SUPPRESSION": 200,
+        "COMPOSITION_PLAN": 400,
+        "ITEMIZATION_DECISION": 600,
+        "MACRO_PRIORITY": 450,
+        "MATCHUP_PLAN": 450,
+        "THREAT_ASSESSMENT": 300
+      },
+      "decisions": {
+        "REQUEST_REFRESH": 306,
+        "SHOW": 1691,
+        "SUPPRESS": 403
+      },
+      "locales": {
+        "it-IT": 2400
+      },
+      "uniqueRequestIds": 2400,
+      "uniqueInputs": 2400,
+      "uniquePairs": 2400,
+      "systemPromptHashes": [
+        "67a6ca5bd7ccaca78fb9bad891e574d822bcda91ed6f84253f1418d2724d182d"
+      ]
+    },
+    "valid": {
+      "examples": 600,
+      "tasks": {
+        "ADVICE_SUPPRESSION": 50,
+        "COMPOSITION_PLAN": 100,
+        "ITEMIZATION_DECISION": 150,
+        "MACRO_PRIORITY": 100,
+        "MATCHUP_PLAN": 100,
+        "THREAT_ASSESSMENT": 100
+      },
+      "decisions": {
+        "REQUEST_REFRESH": 140,
+        "SHOW": 299,
+        "SUPPRESS": 161
+      },
+      "locales": {
+        "it-IT": 600
+      },
+      "uniqueRequestIds": 600,
+      "uniqueInputs": 600,
+      "uniquePairs": 600,
+      "systemPromptHashes": [
+        "67a6ca5bd7ccaca78fb9bad891e574d822bcda91ed6f84253f1418d2724d182d"
+      ]
+    },
+    "test": {
+      "examples": 600,
+      "tasks": {
+        "ADVICE_SUPPRESSION": 50,
+        "COMPOSITION_PLAN": 100,
+        "ITEMIZATION_DECISION": 150,
+        "MACRO_PRIORITY": 100,
+        "MATCHUP_PLAN": 100,
+        "THREAT_ASSESSMENT": 100
+      },
+      "decisions": {
+        "REQUEST_REFRESH": 86,
+        "SHOW": 432,
+        "SUPPRESS": 82
+      },
+      "locales": {
+        "it-IT": 600
+      },
+      "uniqueRequestIds": 600,
+      "uniqueInputs": 600,
+      "uniquePairs": 600,
+      "systemPromptHashes": [
+        "67a6ca5bd7ccaca78fb9bad891e574d822bcda91ed6f84253f1418d2724d182d"
+      ]
+    },
+    "challenge": {
+      "examples": 600,
+      "tasks": {
+        "ADVICE_SUPPRESSION": 50,
+        "COMPOSITION_PLAN": 100,
+        "ITEMIZATION_DECISION": 150,
+        "MACRO_PRIORITY": 100,
+        "MATCHUP_PLAN": 100,
+        "THREAT_ASSESSMENT": 100
+      },
+      "decisions": {
+        "REQUEST_REFRESH": 148,
+        "SHOW": 360,
+        "SUPPRESS": 92
+      },
+      "locales": {
+        "en-US": 296,
+        "it-IT": 304
+      },
+      "uniqueRequestIds": 600,
+      "uniqueInputs": 600,
+      "uniquePairs": 600,
+      "systemPromptHashes": [
+        "67a6ca5bd7ccaca78fb9bad891e574d822bcda91ed6f84253f1418d2724d182d"
+      ]
+    }
+  },
+  "errors": []
+}

@@ -1,0 +1,69 @@
+# LOLAI Advisor — Qwen3-14B QLoRA
+# Eseguire dalla root del repository con:
+#   mlx_lm.lora --config training/configs/qwen3-14b-qlora.yaml
+#
+# Prerequisiti:
+#   models/base/qwen3-14b-4bit/
+#   datasets/releases/1.0.0/train.jsonl
+#   datasets/releases/1.0.0/valid.jsonl
+#
+# test.jsonl e challenge.jsonl NON vengono usati durante il training.
+
+# Modello MLX quantizzato: usando un modello quantizzato, MLX-LM esegue QLoRA.
+model: "models/base/qwen3-14b-4bit"
+
+# Modalità training.
+train: true
+fine_tune_type: "lora"
+
+# Dataset locale contenente train.jsonl e valid.jsonl.
+data: "datasets/releases/1.0.0"
+
+# Riproducibilità.
+seed: 42
+
+# Ottimizzatore.
+optimizer: "adamw"
+learning_rate: 1.0e-5
+
+# Il dataset contiene 2.400 esempi.
+# 4.800 iterazioni corrispondono a due passaggi nominali sui micro-batch
+# con batch_size 4; la selezione finale dipenderà comunque dagli eval.
+iters: 4800
+
+# Memoria e batch.
+batch_size: 4
+grad_accumulation_steps: 2
+max_seq_length: 3072
+grad_checkpoint: false
+
+# Qwen3-14B è dense: adattiamo gli ultimi 24 layer.
+num_layers: 24
+
+# Calcola la loss soltanto sulla risposta assistant finale.
+mask_prompt: true
+
+# Validazione e logging.
+val_batches: 50
+steps_per_report: 10
+steps_per_eval: 200
+
+# Adapter e checkpoint.
+adapter_path: "models/adapters/qwen3-14b-lolai-v1.0.0"
+resume_adapter_file: null
+save_every: 400
+
+# Il test set resta isolato fino al congelamento del modello candidato.
+test: false
+test_batches: -1
+
+# Layer lineari sui quali applicare LoRA.
+lora_parameters:
+  keys:
+    - "self_attn.q_proj"
+    - "self_attn.k_proj"
+    - "self_attn.v_proj"
+    - "self_attn.o_proj"
+  rank: 16
+  scale: 32.0
+  dropout: 0.05

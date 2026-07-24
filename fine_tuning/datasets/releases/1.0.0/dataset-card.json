@@ -1,0 +1,339 @@
+{
+  "aggregate": {
+    "decisions": {
+      "REQUEST_REFRESH": 680,
+      "SHOW": 2782,
+      "SUPPRESS": 738
+    },
+    "examples": 4200,
+    "locales": {
+      "en-US": 296,
+      "it-IT": 3904
+    },
+    "tasks": {
+      "ADVICE_SUPPRESSION": 350,
+      "COMPOSITION_PLAN": 700,
+      "ITEMIZATION_DECISION": 1050,
+      "MACRO_PRIORITY": 750,
+      "MATCHUP_PLAN": 750,
+      "THREAT_ASSESSMENT": 600
+    }
+  },
+  "baseModelTarget": {
+    "family": "Qwen3",
+    "model": "Qwen3-14B Instruct",
+    "runtimeMode": "non-thinking",
+    "thinkingMode": "disabled",
+    "trainingMode": "QLoRA"
+  },
+  "createdAt": "2026-07-24T13:51:30+00:00",
+  "datasetName": "LOLAI Advisor Invariant Strategic Dataset",
+  "datasetVersion": "1.0.0",
+  "format": {
+    "assistantContent": "Canonical compact JSON string",
+    "conversationFormat": "chat",
+    "encoding": "UTF-8",
+    "messageOrder": [
+      "system",
+      "user",
+      "assistant"
+    ],
+    "type": "JSONL",
+    "userContent": "Canonical compact JSON string"
+  },
+  "generationPolicy": {
+    "canonicalization": {
+      "compactSeparators": true,
+      "oneExamplePerLine": true,
+      "sortKeys": true
+    },
+    "generatorSeeds": {
+      "challenge": 20260727,
+      "test": 20260726,
+      "train": 20260724,
+      "valid": 20260725
+    },
+    "generatorType": "Deterministic parametrized synthetic generation",
+    "humanReviewStatus": "Schema and invariants were programmatically validated. Strategic labels are synthetic policy labels and still require expert sampling before production use."
+  },
+  "knowledgeBoundary": {
+    "excluded": [
+      "Patch identifiers",
+      "Champion names and memorized abilities",
+      "Item names, recipes, costs and stat values",
+      "Rune names and effects",
+      "Objective spawn or respawn timers",
+      "Concrete cooldowns and ratios",
+      "Current builds, matchup tables, win rates, pick rates and tier lists",
+      "Current map or UI assumptions",
+      "Direct champion-to-item or champion-to-matchup associations"
+    ],
+    "included": [
+      "Abstract strategic relationships",
+      "Evidence-grounded decision behavior",
+      "Threat prioritization",
+      "Team win-condition alignment",
+      "Missing-function completion",
+      "Feasibility and opportunity-cost reasoning",
+      "Advice suppression",
+      "Refresh requests under stale, incomplete or contradictory context",
+      "Opaque identifier handling",
+      "Candidate-order invariance",
+      "Prompt-injection resistance inside input data"
+    ],
+    "policy": "INVARIANT_ONLY",
+    "runtimeRequirement": "All volatile facts must be injected through external, versioned context with provenance, confidence, freshness and evidence IDs."
+  },
+  "language": [
+    "it-IT",
+    "en-US"
+  ],
+  "limitations": [
+    "The dataset teaches abstract strategic reasoning, not current League of Legends facts.",
+    "Synthetic labels can encode policy assumptions and must be sampled by an expert.",
+    "The current release does not contain real match trajectories or temporal sequences.",
+    "The model still requires an external candidate generator and context builder.",
+    "The challenge split is adversarial but cannot cover every possible injection or malformed input.",
+    "Confidence values are supervised approximations, not calibrated probabilities by default."
+  ],
+  "ontologyVersion": "1.0.0",
+  "prohibitedUses": [
+    "Using the model as a source of current patch facts without external context",
+    "Allowing the model to invent purchases or actions outside supplied candidates",
+    "Using challenge examples for training before final evaluation",
+    "Treating model output as mechanically instantaneous gameplay control"
+  ],
+  "purpose": "Fine-tune a strategic decision model that selects among supplied candidate actions using only structured evidence, while learning abstention, refresh, threat prioritization, team-function reasoning, feasibility and concise output.",
+  "recommendedEvaluation": {
+    "automaticMetrics": [
+      "JSON validity",
+      "Schema conformance",
+      "Decision accuracy",
+      "Preferred-action accuracy",
+      "Acceptable-action rate",
+      "Suppression precision and recall",
+      "Refresh precision and recall",
+      "Invented-action rate",
+      "Invented-evidence rate",
+      "Unsupported-claim rate",
+      "Counterfactual consistency",
+      "Candidate-order invariance",
+      "Locale compliance"
+    ],
+    "releaseGates": {
+      "candidateOrderInvarianceMinimum": 0.98,
+      "counterfactualConsistencyMinimum": 0.9,
+      "inventedActionRate": 0.0,
+      "inventedEvidenceRate": 0.0,
+      "jsonValidity": 1.0,
+      "schemaConformance": 1.0,
+      "unsupportedClaimRateMaximum": 0.01
+    }
+  },
+  "recommendedTrainingUse": {
+    "doNotUse": [
+      "test.jsonl for early stopping",
+      "challenge.jsonl for hyperparameter selection",
+      "challenge.jsonl for training"
+    ],
+    "initialMethod": "Supervised fine-tuning with QLoRA",
+    "maskPrompt": true,
+    "maxSequenceLength": 2048,
+    "trainFile": "train.jsonl",
+    "validationFile": "valid.jsonl"
+  },
+  "releaseChecklist": [
+    "Verify all four file hashes",
+    "Run JSONL and schema validators",
+    "Confirm runtime system prompt hash",
+    "Confirm ontology and schema versions",
+    "Train only on train.jsonl",
+    "Select checkpoints using valid.jsonl",
+    "Freeze model and prompt before test.jsonl",
+    "Run challenge.jsonl only after release candidate freeze",
+    "Archive base model revision, adapter, config and evaluation report"
+  ],
+  "schemaVersion": "1.0.0",
+  "splitPolicy": {
+    "challenge": "Adversarial and out-of-distribution evaluation only. Never use for gradient updates, checkpoint selection, prompt tuning or iterative error fixing before freezing the evaluated release.",
+    "leakageRule": "Future releases must split by causal template family and generator family, not by random row.",
+    "test": "Held out from training and hyperparameter selection. Used once to estimate final generalization on unseen causal families.",
+    "train": "Used for gradient updates. Contains invariant strategic scenarios, counterfactuals, abstention cases and refresh cases.",
+    "valid": "Used during training for model selection and early stopping. Must not be merged into train while comparing experiments."
+  },
+  "splits": {
+    "challenge": {
+      "confidence": {
+        "max": 0.96,
+        "mean": 0.7504,
+        "min": 0.3
+      },
+      "decisions": {
+        "REQUEST_REFRESH": 148,
+        "SHOW": 360,
+        "SUPPRESS": 92
+      },
+      "examples": 600,
+      "filename": "challenge.jsonl",
+      "locales": {
+        "en-US": 296,
+        "it-IT": 304
+      },
+      "messageLengthChars": {
+        "max": 106,
+        "mean": 59.02,
+        "min": 0
+      },
+      "sha256": "d07941fbfdf5fbe367f8f4cb5d52cab2cd6657ec1c7e84ceaa86b4a369581e6e",
+      "sizeBytes": 2441768,
+      "sizeMiB": 2.329,
+      "tasks": {
+        "ADVICE_SUPPRESSION": 50,
+        "COMPOSITION_PLAN": 100,
+        "ITEMIZATION_DECISION": 150,
+        "MACRO_PRIORITY": 100,
+        "MATCHUP_PLAN": 100,
+        "THREAT_ASSESSMENT": 100
+      }
+    },
+    "test": {
+      "confidence": {
+        "max": 0.96,
+        "mean": 0.812,
+        "min": 0.33
+      },
+      "decisions": {
+        "REQUEST_REFRESH": 86,
+        "SHOW": 432,
+        "SUPPRESS": 82
+      },
+      "examples": 600,
+      "filename": "test.jsonl",
+      "locales": {
+        "it-IT": 600
+      },
+      "messageLengthChars": {
+        "max": 127,
+        "mean": 71.62,
+        "min": 0
+      },
+      "sha256": "8ff6e30f4d53e274fbef51f2b2222a61570fc26818b72a2209b673047c508224",
+      "sizeBytes": 2215143,
+      "sizeMiB": 2.113,
+      "tasks": {
+        "ADVICE_SUPPRESSION": 50,
+        "COMPOSITION_PLAN": 100,
+        "ITEMIZATION_DECISION": 150,
+        "MACRO_PRIORITY": 100,
+        "MATCHUP_PLAN": 100,
+        "THREAT_ASSESSMENT": 100
+      }
+    },
+    "train": {
+      "confidence": {
+        "max": 0.96,
+        "mean": 0.8178,
+        "min": 0.3
+      },
+      "decisions": {
+        "REQUEST_REFRESH": 306,
+        "SHOW": 1691,
+        "SUPPRESS": 403
+      },
+      "examples": 2400,
+      "filename": "train.jsonl",
+      "locales": {
+        "it-IT": 2400
+      },
+      "messageLengthChars": {
+        "max": 109,
+        "mean": 62.6,
+        "min": 0
+      },
+      "sha256": "48e18914cd85bb74561eaa9dca332e920a4a501f2022ed7d0b69fe60eefcdcd6",
+      "sizeBytes": 9611958,
+      "sizeMiB": 9.167,
+      "tasks": {
+        "ADVICE_SUPPRESSION": 200,
+        "COMPOSITION_PLAN": 400,
+        "ITEMIZATION_DECISION": 600,
+        "MACRO_PRIORITY": 450,
+        "MATCHUP_PLAN": 450,
+        "THREAT_ASSESSMENT": 300
+      }
+    },
+    "valid": {
+      "confidence": {
+        "max": 0.96,
+        "mean": 0.7327,
+        "min": 0.31
+      },
+      "decisions": {
+        "REQUEST_REFRESH": 140,
+        "SHOW": 299,
+        "SUPPRESS": 161
+      },
+      "examples": 600,
+      "filename": "valid.jsonl",
+      "locales": {
+        "it-IT": 600
+      },
+      "messageLengthChars": {
+        "max": 118,
+        "mean": 49.83,
+        "min": 0
+      },
+      "sha256": "849ea16b4cfb943ac6100781b075ef58ad57d2d4ee59582eb824ba6105585c1d",
+      "sizeBytes": 2174088,
+      "sizeMiB": 2.073,
+      "tasks": {
+        "ADVICE_SUPPRESSION": 50,
+        "COMPOSITION_PLAN": 100,
+        "ITEMIZATION_DECISION": 150,
+        "MACRO_PRIORITY": 100,
+        "MATCHUP_PLAN": 100,
+        "THREAT_ASSESSMENT": 100
+      }
+    }
+  },
+  "supportedDecisions": [
+    "SHOW",
+    "SUPPRESS",
+    "REQUEST_REFRESH"
+  ],
+  "supportedTasks": [
+    "COMPOSITION_PLAN",
+    "MATCHUP_PLAN",
+    "ITEMIZATION_DECISION",
+    "MACRO_PRIORITY",
+    "THREAT_ASSESSMENT",
+    "ADVICE_SUPPRESSION"
+  ],
+  "systemPrompt": {
+    "embeddedInEveryExample": true,
+    "mustMatchRuntimePrompt": true,
+    "sha256": "67a6ca5bd7ccaca78fb9bad891e574d822bcda91ed6f84253f1418d2724d182d"
+  },
+  "validationRequirements": {
+    "referential": [
+      "Every output evidenceId exists in input evidence",
+      "Every SHOW primaryActionId is present in input candidates",
+      "ADVICE_SUPPRESSION SHOW uses candidateAdvice.actionId",
+      "SUPPRESS and REQUEST_REFRESH use null primaryActionId"
+    ],
+    "semantic": [
+      "SHOW requires a non-empty visible message",
+      "SUPPRESS and REQUEST_REFRESH require an empty message",
+      "Volatile game knowledge must not be inferred from memory",
+      "Identifiers and candidate ordering must not determine the answer"
+    ],
+    "syntactic": [
+      "Every line parses as JSON",
+      "Every user and assistant content parses as JSON",
+      "Message order is system, user, assistant",
+      "Assistant category equals input task",
+      "Confidence is between 0 and 1",
+      "Visible message length is at most 180 characters"
+    ]
+  }
+}

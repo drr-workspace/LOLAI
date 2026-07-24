@@ -1,0 +1,8 @@
+state=COMPLETED
+run_id=20260724-164159
+updated_at=2026-07-24T14:48:21Z
+detail=Fine-tuning terminato correttamente
+log=training/logs/20260724-164159/full.log
+config=training/configs/qwen3-14b-qlora.yaml
+data=datasets/releases/1.0.0
+model=models/base/qwen3-14b-4bit

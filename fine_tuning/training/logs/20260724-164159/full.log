@@ -1,0 +1,49 @@
+============================================================
+ LOLAI Advisor — Qwen3-14B QLoRA
+============================================================
+Run ID:       20260724-164159
+Avvio:        2026-07-24 16:41:59 CEST
+Root:         /Users/raffaele.deraffaele/Documents/Repos/DRR/LOLAI/fine_tuning
+Config:       training/configs/qwen3-14b-qlora.yaml
+Dataset:      datasets/releases/1.0.0
+Modello:      models/base/qwen3-14b-4bit
+Log completo: training/logs/20260724-164159/full.log
+============================================================
+
+[1/2] Validazione dataset...
+VALIDAZIONE COMPLETATA
+- train: 2400 esempi, 2400 input unici, 2400 coppie uniche
+- valid: 600 esempi, 600 input unici, 600 coppie uniche
+- test: 600 esempi, 600 input unici, 600 coppie uniche
+- challenge: 600 esempi, 600 input unici, 600 coppie uniche
+Totale: 4200 esempi
+Nessun duplicato esatto tra gli split.
+Hash e conteggi coerenti con dataset-card.json.
+
+[2/2] Avvio fine-tuning QLoRA...
+Per seguire l'avanzamento da un altro terminale:
+  tail -f training/logs/latest/full.log
+
+Loading configuration file training/configs/qwen3-14b-qlora.yaml
+Loading pretrained model
+Loading datasets
+Training
+Trainable parameters: 0.085% (12.583M/14768.307M)
+Starting training..., iters: 50
+Calculating loss...:   0%|          | 0/50 [00:00<?, ?it/s]Calculating loss...:   2%|▏         | 1/50 [00:01<01:14,  1.51s/it]Calculating loss...:   4%|▍         | 2/50 [00:02<00:59,  1.24s/it]Calculating loss...:   6%|▌         | 3/50 [00:03<00:52,  1.11s/it]Calculating loss...:   8%|▊         | 4/50 [00:04<00:49,  1.08s/it]Calculating loss...:  10%|█         | 5/50 [00:05<00:46,  1.03s/it]Calculating loss...:  12%|█▏        | 6/50 [00:06<00:44,  1.02s/it]Calculating loss...:  14%|█▍        | 7/50 [00:07<00:42,  1.00it/s]Calculating loss...:  16%|█▌        | 8/50 [00:08<00:42,  1.01s/it]Calculating loss...:  18%|█▊        | 9/50 [00:09<00:43,  1.06s/it]Calculating loss...:  20%|██        | 10/50 [00:10<00:41,  1.03s/it]Calculating loss...:  22%|██▏       | 11/50 [00:11<00:42,  1.09s/it]Calculating loss...:  24%|██▍       | 12/50 [00:12<00:39,  1.05s/it]Calculating loss...:  26%|██▌       | 13/50 [00:13<00:38,  1.03s/it]Calculating loss...:  28%|██▊       | 14/50 [00:14<00:38,  1.06s/it]Calculating loss...:  30%|███       | 15/50 [00:15<00:37,  1.06s/it]Calculating loss...:  32%|███▏      | 16/50 [00:17<00:39,  1.16s/it]Calculating loss...:  34%|███▍      | 17/50 [00:18<00:36,  1.12s/it]Calculating loss...:  36%|███▌      | 18/50 [00:19<00:34,  1.09s/it]Calculating loss...:  38%|███▊      | 19/50 [00:20<00:33,  1.09s/it]Calculating loss...:  40%|████      | 20/50 [00:21<00:31,  1.04s/it]Calculating loss...:  42%|████▏     | 21/50 [00:22<00:30,  1.04s/it]Calculating loss...:  44%|████▍     | 22/50 [00:23<00:27,  1.03it/s]Calculating loss...:  46%|████▌     | 23/50 [00:24<00:27,  1.02s/it]Calculating loss...:  48%|████▊     | 24/50 [00:25<00:27,  1.07s/it]Calculating loss...:  50%|█████     | 25/50 [00:26<00:26,  1.08s/it]Calculating loss...:  52%|█████▏    | 26/50 [00:27<00:26,  1.10s/it]Calculating loss...:  54%|█████▍    | 27/50 [00:29<00:26,  1.14s/it]Calculating loss...:  56%|█████▌    | 28/50 [00:30<00:25,  1.14s/it]Calculating loss...:  58%|█████▊    | 29/50 [00:31<00:24,  1.17s/it]Calculating loss...:  60%|██████    | 30/50 [00:32<00:23,  1.15s/it]Calculating loss...:  62%|██████▏   | 31/50 [00:33<00:22,  1.17s/it]Calculating loss...:  64%|██████▍   | 32/50 [00:34<00:21,  1.18s/it]Calculating loss...:  66%|██████▌   | 33/50 [00:36<00:20,  1.18s/it]Calculating loss...:  68%|██████▊   | 34/50 [00:37<00:18,  1.14s/it]Calculating loss...:  70%|███████   | 35/50 [00:38<00:17,  1.15s/it]Calculating loss...:  72%|███████▏  | 36/50 [00:39<00:16,  1.17s/it]Calculating loss...:  74%|███████▍  | 37/50 [00:40<00:15,  1.19s/it]Calculating loss...:  76%|███████▌  | 38/50 [00:41<00:14,  1.17s/it]Calculating loss...:  78%|███████▊  | 39/50 [00:43<00:12,  1.18s/it]Calculating loss...:  80%|████████  | 40/50 [00:44<00:11,  1.17s/it]Calculating loss...:  82%|████████▏ | 41/50 [00:45<00:10,  1.18s/it]Calculating loss...:  84%|████████▍ | 42/50 [00:46<00:09,  1.19s/it]Calculating loss...:  86%|████████▌ | 43/50 [00:47<00:08,  1.18s/it]Calculating loss...:  88%|████████▊ | 44/50 [00:49<00:07,  1.18s/it]Calculating loss...:  90%|█████████ | 45/50 [00:50<00:05,  1.16s/it]Calculating loss...:  92%|█████████▏| 46/50 [00:51<00:04,  1.13s/it]Calculating loss...:  94%|█████████▍| 47/50 [00:52<00:03,  1.16s/it]Calculating loss...:  96%|█████████▌| 48/50 [00:53<00:02,  1.15s/it]Calculating loss...:  98%|█████████▊| 49/50 [00:54<00:01,  1.16s/it]Calculating loss...: 100%|██████████| 50/50 [00:55<00:00,  1.14s/it]Calculating loss...: 100%|██████████| 50/50 [00:55<00:00,  1.12s/it]
+Iter 1: Val loss 2.897, Val took 55.893s
+Iter 10: Train loss 2.260, Learning Rate 1.000e-05, It/sec 0.202, Tokens/sec 52.577, Trained Tokens 2599, Peak mem 29.269 GB
+Iter 20: Train loss 1.353, Learning Rate 1.000e-05, It/sec 0.203, Tokens/sec 51.972, Trained Tokens 5156, Peak mem 30.069 GB
+Iter 30: Train loss 1.198, Learning Rate 1.000e-05, It/sec 0.196, Tokens/sec 53.224, Trained Tokens 7867, Peak mem 30.069 GB
+Iter 40: Train loss 0.837, Learning Rate 1.000e-05, It/sec 0.191, Tokens/sec 49.749, Trained Tokens 10469, Peak mem 30.069 GB
+Calculating loss...:   0%|          | 0/50 [00:00<?, ?it/s]Calculating loss...:   2%|▏         | 1/50 [00:01<01:05,  1.33s/it]Calculating loss...:   4%|▍         | 2/50 [00:02<00:54,  1.14s/it]Calculating loss...:   6%|▌         | 3/50 [00:03<00:59,  1.27s/it]Calculating loss...:   8%|▊         | 4/50 [00:05<01:01,  1.33s/it]Calculating loss...:  10%|█         | 5/50 [00:06<01:01,  1.37s/it]Calculating loss...:  12%|█▏        | 6/50 [00:07<01:00,  1.36s/it]Calculating loss...:  14%|█▍        | 7/50 [00:09<00:59,  1.38s/it]Calculating loss...:  16%|█▌        | 8/50 [00:10<00:55,  1.33s/it]Calculating loss...:  18%|█▊        | 9/50 [00:12<00:55,  1.36s/it]Calculating loss...:  20%|██        | 10/50 [00:13<00:53,  1.34s/it]Calculating loss...:  22%|██▏       | 11/50 [00:14<00:52,  1.33s/it]Calculating loss...:  24%|██▍       | 12/50 [00:16<00:51,  1.35s/it]Calculating loss...:  26%|██▌       | 13/50 [00:17<00:50,  1.36s/it]Calculating loss...:  28%|██▊       | 14/50 [00:18<00:49,  1.36s/it]Calculating loss...:  30%|███       | 15/50 [00:20<00:47,  1.35s/it]Calculating loss...:  32%|███▏      | 16/50 [00:21<00:45,  1.33s/it]Calculating loss...:  34%|███▍      | 17/50 [00:22<00:43,  1.33s/it]Calculating loss...:  36%|███▌      | 18/50 [00:24<00:43,  1.36s/it]Calculating loss...:  38%|███▊      | 19/50 [00:25<00:41,  1.34s/it]Calculating loss...:  40%|████      | 20/50 [00:26<00:40,  1.35s/it]Calculating loss...:  42%|████▏     | 21/50 [00:28<00:40,  1.39s/it]Calculating loss...:  44%|████▍     | 22/50 [00:29<00:38,  1.38s/it]Calculating loss...:  46%|████▌     | 23/50 [00:31<00:37,  1.38s/it]Calculating loss...:  48%|████▊     | 24/50 [00:32<00:35,  1.37s/it]Calculating loss...:  50%|█████     | 25/50 [00:33<00:34,  1.36s/it]Calculating loss...:  52%|█████▏    | 26/50 [00:35<00:32,  1.36s/it]Calculating loss...:  54%|█████▍    | 27/50 [00:36<00:31,  1.36s/it]Calculating loss...:  56%|█████▌    | 28/50 [00:37<00:29,  1.36s/it]Calculating loss...:  58%|█████▊    | 29/50 [00:39<00:28,  1.37s/it]Calculating loss...:  60%|██████    | 30/50 [00:40<00:27,  1.38s/it]Calculating loss...:  62%|██████▏   | 31/50 [00:42<00:26,  1.39s/it]Calculating loss...:  64%|██████▍   | 32/50 [00:43<00:24,  1.34s/it]Calculating loss...:  66%|██████▌   | 33/50 [00:44<00:22,  1.34s/it]Calculating loss...:  68%|██████▊   | 34/50 [00:45<00:21,  1.34s/it]Calculating loss...:  70%|███████   | 35/50 [00:47<00:20,  1.34s/it]Calculating loss...:  72%|███████▏  | 36/50 [00:48<00:19,  1.36s/it]Calculating loss...:  74%|███████▍  | 37/50 [00:49<00:17,  1.35s/it]Calculating loss...:  76%|███████▌  | 38/50 [00:51<00:16,  1.34s/it]Calculating loss...:  78%|███████▊  | 39/50 [00:52<00:14,  1.33s/it]Calculating loss...:  80%|████████  | 40/50 [00:53<00:12,  1.27s/it]Calculating loss...:  82%|████████▏ | 41/50 [00:55<00:11,  1.29s/it]Calculating loss...:  84%|████████▍ | 42/50 [00:56<00:10,  1.31s/it]Calculating loss...:  86%|████████▌ | 43/50 [00:57<00:09,  1.32s/it]Calculating loss...:  88%|████████▊ | 44/50 [00:59<00:08,  1.34s/it]Calculating loss...:  90%|█████████ | 45/50 [01:00<00:06,  1.35s/it]Calculating loss...:  92%|█████████▏| 46/50 [01:01<00:05,  1.37s/it]Calculating loss...:  94%|█████████▍| 47/50 [01:03<00:04,  1.38s/it]Calculating loss...:  96%|█████████▌| 48/50 [01:04<00:02,  1.37s/it]Calculating loss...:  98%|█████████▊| 49/50 [01:05<00:01,  1.32s/it]Calculating loss...: 100%|██████████| 50/50 [01:07<00:00,  1.36s/it]Calculating loss...: 100%|██████████| 50/50 [01:07<00:00,  1.35s/it]
+Iter 50: Val loss 0.675, Val took 67.352s
+Iter 50: Train loss 0.631, Learning Rate 1.000e-05, It/sec 0.186, Tokens/sec 47.917, Trained Tokens 13043, Peak mem 30.069 GB
+Iter 50: Saved adapter weights to models/adapters/qwen3-14b-lolai-v1.0.0/adapters.safetensors and models/adapters/qwen3-14b-lolai-v1.0.0/0000050_adapters.safetensors.
+Saved final weights to models/adapters/qwen3-14b-lolai-v1.0.0/adapters.safetensors.
+
+============================================================
+Training completato correttamente.
+Fine: 2026-07-24 16:48:21 CEST
+Run:  training/logs/20260724-164159
+============================================================

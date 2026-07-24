@@ -1,0 +1,38 @@
+============================================================
+ LOLAI Advisor — Qwen3-14B QLoRA
+============================================================
+Run ID:       20260724-164847
+Avvio:        2026-07-24 16:48:47 CEST
+Root:         /Users/raffaele.deraffaele/Documents/Repos/DRR/LOLAI/fine_tuning
+Config:       training/configs/qwen3-14b-qlora.yaml
+Dataset:      datasets/releases/1.0.0
+Modello:      models/base/qwen3-14b-4bit
+Log completo: training/logs/20260724-164847/full.log
+============================================================
+
+[1/2] Validazione dataset...
+VALIDAZIONE COMPLETATA
+- train: 2400 esempi, 2400 input unici, 2400 coppie uniche
+- valid: 600 esempi, 600 input unici, 600 coppie uniche
+- test: 600 esempi, 600 input unici, 600 coppie uniche
+- challenge: 600 esempi, 600 input unici, 600 coppie uniche
+Totale: 4200 esempi
+Nessun duplicato esatto tra gli split.
+Hash e conteggi coerenti con dataset-card.json.
+
+[2/2] Avvio fine-tuning QLoRA...
+Per seguire l'avanzamento da un altro terminale:
+  tail -f training/logs/latest/full.log
+
+Loading configuration file training/configs/qwen3-14b-qlora.yaml
+Loading pretrained model
+Loading datasets
+Training
+Trainable parameters: 0.085% (12.583M/14768.307M)
+Starting training..., iters: 50
+Calculating loss...:   0%|          | 0/50 [00:00<?, ?it/s]Calculating loss...:   2%|▏         | 1/50 [00:02<02:13,  2.73s/it]Calculating loss...:   4%|▍         | 2/50 [00:05<02:14,  2.80s/it]Calculating loss...:   6%|▌         | 3/50 [00:08<02:09,  2.76s/it]Calculating loss...:   8%|▊         | 4/50 [00:10<02:03,  2.68s/it]Calculating loss...:  10%|█         | 5/50 [00:13<01:59,  2.65s/it]Calculating loss...:  12%|█▏        | 6/50 [00:16<01:56,  2.64s/it]Calculating loss...:  14%|█▍        | 7/50 [00:18<01:51,  2.60s/it]Calculating loss...:  16%|█▌        | 8/50 [00:20<01:44,  2.50s/it]Calculating loss...:  18%|█▊        | 9/50 [00:23<01:41,  2.47s/it]Calculating loss...:  20%|██        | 10/50 [00:25<01:40,  2.52s/it]Calculating loss...:  22%|██▏       | 11/50 [00:28<01:39,  2.54s/it]Calculating loss...:  24%|██▍       | 12/50 [00:31<01:37,  2.55s/it]Calculating loss...:  26%|██▌       | 13/50 [00:33<01:35,  2.57s/it]Calculating loss...:  28%|██▊       | 14/50 [00:36<01:33,  2.59s/it]Calculating loss...:  30%|███       | 15/50 [00:38<01:28,  2.53s/it]Calculating loss...:  32%|███▏      | 16/50 [00:41<01:26,  2.54s/it]Calculating loss...:  34%|███▍      | 17/50 [00:43<01:24,  2.55s/it]Calculating loss...:  36%|███▌      | 18/50 [00:46<01:21,  2.55s/it]Calculating loss...:  38%|███▊      | 19/50 [00:48<01:16,  2.46s/it]Calculating loss...:  40%|████      | 20/50 [00:51<01:15,  2.53s/it]Calculating loss...:  42%|████▏     | 21/50 [00:53<01:13,  2.54s/it]Calculating loss...:  44%|████▍     | 22/50 [00:56<01:11,  2.55s/it]Calculating loss...:  46%|████▌     | 23/50 [00:58<01:07,  2.49s/it]Calculating loss...:  48%|████▊     | 24/50 [01:01<01:06,  2.54s/it]Calculating loss...:  50%|█████     | 25/50 [01:04<01:04,  2.58s/it]Calculating loss...:  52%|█████▏    | 26/50 [01:06<01:00,  2.52s/it]Calculating loss...:  54%|█████▍    | 27/50 [01:08<00:57,  2.49s/it]Calculating loss...:  56%|█████▌    | 28/50 [01:11<00:55,  2.54s/it]Calculating loss...:  58%|█████▊    | 29/50 [01:14<00:54,  2.61s/it]Calculating loss...:  60%|██████    | 30/50 [01:16<00:51,  2.58s/it]Calculating loss...:  62%|██████▏   | 31/50 [01:19<00:51,  2.69s/it]Calculating loss...:  64%|██████▍   | 32/50 [01:22<00:48,  2.68s/it]Calculating loss...:  66%|██████▌   | 33/50 [01:25<00:45,  2.67s/it]Calculating loss...:  68%|██████▊   | 34/50 [01:27<00:42,  2.64s/it]Calculating loss...:  70%|███████   | 35/50 [01:30<00:39,  2.66s/it]Calculating loss...:  72%|███████▏  | 36/50 [01:33<00:37,  2.66s/it]Calculating loss...:  74%|███████▍  | 37/50 [01:35<00:33,  2.61s/it]Calculating loss...:  76%|███████▌  | 38/50 [01:38<00:31,  2.62s/it]Calculating loss...:  78%|███████▊  | 39/50 [01:40<00:29,  2.66s/it]Calculating loss...:  80%|████████  | 40/50 [01:43<00:26,  2.67s/it]Calculating loss...:  82%|████████▏ | 41/50 [01:46<00:24,  2.67s/it]Calculating loss...:  84%|████████▍ | 42/50 [01:49<00:21,  2.69s/it]Calculating loss...:  86%|████████▌ | 43/50 [01:51<00:18,  2.67s/it]Calculating loss...:  88%|████████▊ | 44/50 [01:54<00:15,  2.66s/it]Calculating loss...:  90%|█████████ | 45/50 [01:57<00:13,  2.68s/it]Calculating loss...:  92%|█████████▏| 46/50 [01:59<00:10,  2.69s/it]Calculating loss...:  94%|█████████▍| 47/50 [02:02<00:08,  2.71s/it]Calculating loss...:  96%|█████████▌| 48/50 [02:05<00:05,  2.70s/it]Calculating loss...:  98%|█████████▊| 49/50 [02:07<00:02,  2.69s/it]Calculating loss...: 100%|██████████| 50/50 [02:10<00:00,  2.72s/it]Calculating loss...: 100%|██████████| 50/50 [02:10<00:00,  2.61s/it]
+Iter 1: Val loss 2.875, Val took 130.677s
+Iter 10: Train loss 1.906, Learning Rate 1.000e-05, It/sec 0.094, Tokens/sec 48.906, Trained Tokens 5200, Peak mem 49.688 GB
+Iter 20: Train loss 0.956, Learning Rate 1.000e-05, It/sec 0.093, Tokens/sec 48.488, Trained Tokens 10436, Peak mem 49.688 GB
+
+[2026-07-24 16:54:45] Training interrotto. Exit code: 130
