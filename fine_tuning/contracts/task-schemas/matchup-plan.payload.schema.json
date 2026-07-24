@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "matchup-plan.payload.schema.json",
+  "title": "Matchup plan payload",
+  "description": "Task-specific input payload for matchup planning.",
+  "type": "object",
+  "properties": {
+    "laneState": {"$ref": "common.schema.json#/$defs/nonEmptyString", "description": "Abstract current lane state."},
+    "opponentThreatPatterns": {"$ref": "common.schema.json#/$defs/stringList", "description": "Abstract threat patterns presented by the opponent."},
+    "playerFunctions": {"$ref": "common.schema.json#/$defs/stringList", "description": "Strategic functions available to the player."},
+    "candidates": {
+      "type": "array",
+      "description": "Candidate matchup actions available to the advisor.",
+      "items": {"$ref": "common.schema.json#/$defs/candidateAction"},
+      "minItems": 1
+    }
+  },
+  "required": ["laneState", "opponentThreatPatterns", "playerFunctions", "candidates"],
+  "additionalProperties": false
+}

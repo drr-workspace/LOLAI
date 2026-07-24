@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "macro-priority.payload.schema.json",
+  "title": "Macro priority payload",
+  "description": "Task-specific input payload for macro-priority decisions.",
+  "type": "object",
+  "properties": {
+    "waveStates": {
+      "type": "object",
+      "description": "Abstract wave state keyed by opaque lane or region identifier.",
+      "propertyNames": {"$ref": "common.schema.json#/$defs/nonVolatilePropertyName"},
+      "additionalProperties": {"$ref": "common.schema.json#/$defs/nonEmptyString"}
+    },
+    "objectiveWindow": {
+      "type": "object",
+      "description": "Current abstract objective opportunity.",
+      "properties": {
+        "isActive": {"type": "boolean", "description": "Whether the opportunity is currently active."},
+        "urgency": {"$ref": "common.schema.json#/$defs/unitInterval", "description": "Relative urgency of the opportunity."},
+        "evidenceIds": {"$ref": "common.schema.json#/$defs/opaqueIdList", "description": "Evidence supporting the objective assessment."}
+      },
+      "required": ["isActive", "urgency", "evidenceIds"],
+      "additionalProperties": false
+    },
+    "teamPlan": {"$ref": "common.schema.json#/$defs/teamPlan", "description": "Current abstract team plan."},
+    "visionConfidence": {"$ref": "common.schema.json#/$defs/unitInterval", "description": "Confidence in the available vision information."},
+    "candidates": {
+      "type": "array",
+      "description": "Candidate macro actions available to the advisor.",
+      "items": {"$ref": "common.schema.json#/$defs/candidateAction"},
+      "minItems": 1
+    }
+  },
+  "required": ["waveStates", "objectiveWindow", "teamPlan", "visionConfidence", "candidates"],
+  "additionalProperties": false
+}

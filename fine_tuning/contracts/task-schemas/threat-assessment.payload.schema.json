@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "threat-assessment.payload.schema.json",
+  "title": "Threat assessment payload",
+  "description": "Task-specific input payload for threat assessment.",
+  "type": "object",
+  "properties": {
+    "playerFunctions": {"$ref": "common.schema.json#/$defs/stringList", "description": "Strategic functions performed by the player."},
+    "teamPlan": {"$ref": "common.schema.json#/$defs/teamPlan", "description": "Current abstract team plan."},
+    "threats": {
+      "type": "array",
+      "description": "Hostile entities and their abstract threat characteristics.",
+      "items": {"$ref": "common.schema.json#/$defs/threat"},
+      "minItems": 1
+    },
+    "candidates": {
+      "type": "array",
+      "description": "Candidate responses available to the advisor.",
+      "items": {"$ref": "common.schema.json#/$defs/candidateAction"},
+      "minItems": 1
+    }
+  },
+  "required": ["playerFunctions", "teamPlan", "threats", "candidates"],
+  "additionalProperties": false
+}

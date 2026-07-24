@@ -1,0 +1,10 @@
+{
+  "ontologyVersion": "1.0.0",
+  "values": [
+    {"id": "DERIVED_RUNTIME", "description": "Evidence inferred from current runtime observations.", "stable": true},
+    {"id": "HISTORICAL_PATTERN", "description": "Evidence representing an abstract historical pattern.", "stable": true},
+    {"id": "OBSERVED_RUNTIME", "description": "Evidence directly observed from current runtime state.", "stable": true},
+    {"id": "PATCH_KNOWLEDGE", "description": "Versioned upstream knowledge abstracted away from concrete patch identifiers.", "stable": true},
+    {"id": "STRATEGIC_KNOWLEDGE", "description": "Invariant abstract strategic knowledge.", "stable": true}
+  ]
+}

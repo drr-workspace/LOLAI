@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "composition-plan.payload.schema.json",
+  "title": "Composition plan payload",
+  "description": "Task-specific input payload for composition planning.",
+  "type": "object",
+  "properties": {
+    "allyArchetypes": {"$ref": "common.schema.json#/$defs/stringList", "description": "Abstract archetypes present on the allied team."},
+    "allyFunctions": {"$ref": "common.schema.json#/$defs/stringList", "description": "Strategic functions available on the allied team."},
+    "enemyArchetypes": {"$ref": "common.schema.json#/$defs/stringList", "description": "Abstract archetypes present on the opposing team."},
+    "enemyFunctions": {"$ref": "common.schema.json#/$defs/stringList", "description": "Strategic functions available on the opposing team."},
+    "candidates": {
+      "type": "array",
+      "description": "Candidate composition plans available to the advisor.",
+      "items": {"$ref": "common.schema.json#/$defs/candidateAction"},
+      "minItems": 1
+    }
+  },
+  "required": ["allyArchetypes", "allyFunctions", "enemyArchetypes", "enemyFunctions", "candidates"],
+  "additionalProperties": false
+}

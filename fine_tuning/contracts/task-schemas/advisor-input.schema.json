@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "advisor-input.schema.json",
+  "title": "LOLAI advisor input",
+  "description": "The JSON object serialized into the user message for an advisor request.",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "$ref": "common.schema.json#/$defs/version",
+      "description": "Version of this advisor-input contract."
+    },
+    "ontologyVersion": {
+      "$ref": "common.schema.json#/$defs/version",
+      "description": "Version of the abstract ontology used by this request."
+    },
+    "requestId": {
+      "$ref": "common.schema.json#/$defs/opaqueId",
+      "description": "Opaque identifier used to correlate this request."
+    },
+    "task": {
+      "$ref": "common.schema.json#/$defs/task",
+      "description": "Advisor task that determines the payload contract."
+    },
+    "outputLocale": {
+      "$ref": "common.schema.json#/$defs/locale",
+      "description": "Locale requested for the human-readable output message."
+    },
+    "context": {
+      "$ref": "common.schema.json#/$defs/context",
+      "description": "Freshness and completeness metadata for the request."
+    },
+    "evidence": {
+      "type": "array",
+      "description": "Evidence records available to support the decision.",
+      "items": {"$ref": "common.schema.json#/$defs/evidence"}
+    },
+    "recentAdvice": {
+      "type": "array",
+      "description": "Recent decisions supplied to control repetition and suppression.",
+      "items": {"$ref": "common.schema.json#/$defs/recentAdvice"}
+    },
+    "payload": {
+      "type": "object",
+      "description": "Task-specific request data selected by the task discriminator."
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "ontologyVersion",
+    "requestId",
+    "task",
+    "outputLocale",
+    "context",
+    "evidence",
+    "recentAdvice",
+    "payload"
+  ],
+  "oneOf": [
+    {
+      "title": "Composition plan request",
+      "properties": {
+        "task": {"const": "COMPOSITION_PLAN"},
+        "payload": {"$ref": "composition-plan.payload.schema.json"}
+      }
+    },
+    {
+      "title": "Matchup plan request",
+      "properties": {
+        "task": {"const": "MATCHUP_PLAN"},
+        "payload": {"$ref": "matchup-plan.payload.schema.json"}
+      }
+    },
+    {
+      "title": "Itemization decision request",
+      "properties": {
+        "task": {"const": "ITEMIZATION_DECISION"},
+        "payload": {"$ref": "itemization-decision.payload.schema.json"}
+      }
+    },
+    {
+      "title": "Macro priority request",
+      "properties": {
+        "task": {"const": "MACRO_PRIORITY"},
+        "payload": {"$ref": "macro-priority.payload.schema.json"}
+      }
+    },
+    {
+      "title": "Threat assessment request",
+      "properties": {
+        "task": {"const": "THREAT_ASSESSMENT"},
+        "payload": {"$ref": "threat-assessment.payload.schema.json"}
+      }
+    },
+    {
+      "title": "Advice suppression request",
+      "properties": {
+        "task": {"const": "ADVICE_SUPPRESSION"},
+        "payload": {"$ref": "advice-suppression.payload.schema.json"}
+      }
+    }
+  ],
+  "propertyNames": {"$ref": "common.schema.json#/$defs/nonVolatilePropertyName"},
+  "additionalProperties": false
+}

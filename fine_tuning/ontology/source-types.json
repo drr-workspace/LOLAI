@@ -1,0 +1,11 @@
+{
+  "ontologyVersion": "1.0.0",
+  "values": [
+    {"id": "SYNTHETIC", "description": "Scenario produced through controlled synthetic generation.", "stable": true},
+    {"id": "COUNTERFACTUAL", "description": "Scenario created by changing a causally relevant factor.", "stable": true},
+    {"id": "ADVERSARIAL", "description": "Scenario designed to test robustness against misleading context.", "stable": true},
+    {"id": "TEMPORAL", "description": "Scenario belonging to an ordered state progression.", "stable": true},
+    {"id": "REALISTIC_ABSTRACTED", "description": "Realistic situation represented only through abstract invariant concepts.", "stable": true},
+    {"id": "HUMAN_REVIEWED", "description": "Scenario whose content was directly curated by a human reviewer.", "stable": true}
+  ]
+}

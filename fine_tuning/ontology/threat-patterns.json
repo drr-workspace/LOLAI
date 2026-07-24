@@ -1,0 +1,26 @@
+{
+  "ontologyVersion": "1.0.0",
+  "values": [
+    {"id": "ABILITY_RELIANT", "description": "Threat depends primarily on ability execution.", "stable": true},
+    {"id": "AREA_CONTROL", "description": "Threat controls or denies an area.", "stable": true},
+    {"id": "BACKLINE_ACCESS", "description": "Threat can reach protected units.", "stable": true},
+    {"id": "BASIC_ATTACK_RELIANT", "description": "Threat depends primarily on repeated basic attacks.", "stable": true},
+    {"id": "BURST", "description": "Threat delivers concentrated damage rapidly.", "stable": true},
+    {"id": "CRITICAL_STRIKE_RELIANT", "description": "Threat output depends materially on critical strikes.", "stable": true},
+    {"id": "EXECUTE_PATTERN", "description": "Threat becomes more dangerous against weakened targets.", "stable": true},
+    {"id": "HARD_CC", "description": "Threat applies movement or action-denying control.", "stable": true},
+    {"id": "HEALING", "description": "Threat restores health during interaction.", "stable": true},
+    {"id": "HIGH_MOBILITY", "description": "Threat changes position frequently or rapidly.", "stable": true},
+    {"id": "LONG_RANGE", "description": "Threat operates effectively from extended range.", "stable": true},
+    {"id": "ON_HIT", "description": "Threat applies repeated effects through successful hits.", "stable": true},
+    {"id": "PERCENT_HEALTH_DAMAGE", "description": "Threat scales against target health.", "stable": true},
+    {"id": "POKE", "description": "Threat applies pressure before full commitment.", "stable": true},
+    {"id": "REPEATED_DAMAGE", "description": "Threat applies recurring damage instances.", "stable": true},
+    {"id": "RESET_PATTERN", "description": "Threat can repeat actions after satisfying a reset condition.", "stable": true},
+    {"id": "SHIELDING", "description": "Threat prevents incoming damage through shields.", "stable": true},
+    {"id": "SOFT_CC", "description": "Threat impairs movement or effectiveness without full denial.", "stable": true},
+    {"id": "STEALTH_ACCESS", "description": "Threat uses limited visibility to gain access.", "stable": true},
+    {"id": "SUSTAINED_DAMAGE", "description": "Threat remains damaging through extended interactions.", "stable": true},
+    {"id": "TRUE_DAMAGE", "description": "Threat includes damage that bypasses standard mitigation.", "stable": true}
+  ]
+}

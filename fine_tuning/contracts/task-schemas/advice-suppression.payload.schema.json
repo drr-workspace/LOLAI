@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "advice-suppression.payload.schema.json",
+  "title": "Advice suppression payload",
+  "description": "Task-specific input payload used to decide whether candidate advice should be shown.",
+  "type": "object",
+  "properties": {
+    "candidateAdvice": {
+      "type": "object",
+      "description": "The candidate advice being evaluated for suppression.",
+      "properties": {
+        "actionId": {"$ref": "common.schema.json#/$defs/opaqueId", "description": "Opaque identifier of the proposed action."},
+        "category": {"$ref": "common.schema.json#/$defs/task", "description": "Task category that produced the candidate advice."},
+        "reasonCodes": {"$ref": "common.schema.json#/$defs/stringList", "description": "Stable reasons supporting the candidate advice."},
+        "evidenceIds": {"$ref": "common.schema.json#/$defs/opaqueIdList", "description": "Evidence supporting the candidate advice."}
+      },
+      "required": ["actionId", "category", "reasonCodes", "evidenceIds"],
+      "additionalProperties": false
+    },
+    "informationQuality": {"$ref": "common.schema.json#/$defs/unitInterval", "description": "Overall quality of the information supporting the candidate."},
+    "stateChanged": {"type": "boolean", "description": "Whether relevant game state changed since recent advice."}
+  },
+  "required": ["candidateAdvice", "informationQuality", "stateChanged"],
+  "additionalProperties": false
+}

@@ -1,0 +1,24 @@
+{
+  "ontologyVersion": "1.0.0",
+  "values": [
+    {"id": "BREAK_FREEZE", "description": "Disrupt a maintained wave freeze.", "stable": true},
+    {"id": "CONTEST_OBJECTIVE", "description": "Directly contest an active objective opportunity.", "stable": true},
+    {"id": "DISENGAGE", "description": "Exit or prevent an unfavorable engagement.", "stable": true},
+    {"id": "ENGAGE", "description": "Initiate a coordinated engagement.", "stable": true},
+    {"id": "FREEZE", "description": "Maintain a wave in a controlled location.", "stable": true},
+    {"id": "GROUP", "description": "Join allied units for coordinated play.", "stable": true},
+    {"id": "HOLD", "description": "Preserve the current resource or strategic path.", "stable": true},
+    {"id": "PEEL", "description": "Protect a vulnerable allied unit from access.", "stable": true},
+    {"id": "POSITION_SAFELY", "description": "Reduce exposure through safer positioning.", "stable": true},
+    {"id": "PURCHASE", "description": "Spend an abstract resource on an available option.", "stable": true},
+    {"id": "PUSH_FAST", "description": "Advance a wave as quickly as practical.", "stable": true},
+    {"id": "PUSH_SLOW", "description": "Build a gradually advancing wave.", "stable": true},
+    {"id": "RECALL", "description": "Temporarily leave the map to convert resources or reset.", "stable": true},
+    {"id": "REQUEST_INFORMATION", "description": "Delay commitment and request more reliable context.", "stable": true},
+    {"id": "ROTATE", "description": "Move between map regions to support another play.", "stable": true},
+    {"id": "SETUP_VISION", "description": "Improve information and area control before a play.", "stable": true},
+    {"id": "SPLIT", "description": "Apply pressure away from the allied group.", "stable": true},
+    {"id": "STAY", "description": "Remain in the current position or assignment.", "stable": true},
+    {"id": "TRADE_OBJECTIVE", "description": "Exchange an uncontestable objective for value elsewhere.", "stable": true}
+  ]
+}

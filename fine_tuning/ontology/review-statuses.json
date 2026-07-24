@@ -1,0 +1,10 @@
+{
+  "ontologyVersion": "1.0.0",
+  "values": [
+    {"id": "GENERATED", "description": "Scenario has been generated but not yet validated.", "stable": true},
+    {"id": "AUTO_VALIDATED", "description": "Scenario passed automated validation.", "stable": true},
+    {"id": "NEEDS_REVIEW", "description": "Scenario requires human review.", "stable": true},
+    {"id": "APPROVED", "description": "Scenario is approved for its intended use.", "stable": true},
+    {"id": "REJECTED", "description": "Scenario is rejected from further use.", "stable": true}
+  ]
+}

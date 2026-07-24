@@ -29,7 +29,7 @@ learning_rate: 1.0e-5
 # Il dataset contiene 2.400 esempi.
 # 4.800 iterazioni corrispondono a due passaggi nominali sui micro-batch
 # con batch_size 4; la selezione finale dipenderà comunque dagli eval.
-iters: 4800
+iters: 300
 
 # Memoria e batch.
 batch_size: 4
@@ -44,14 +44,14 @@ num_layers: 24
 mask_prompt: true
 
 # Validazione e logging.
-val_batches: 50
+val_batches: -1
 steps_per_report: 10
-steps_per_eval: 200
+steps_per_eval: 50
 
 # Adapter e checkpoint.
-adapter_path: "models/adapters/qwen3-14b-lolai-v1.0.0"
+adapter_path: "models/adapters/qwen3-14b-lolai-v1.0.0-short"
 resume_adapter_file: null
-save_every: 400
+save_every: 50
 
 # Il test set resta isolato fino al congelamento del modello candidato.
 test: false

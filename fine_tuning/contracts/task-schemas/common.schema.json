@@ -1,0 +1,297 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "common.schema.json",
+  "title": "LOLAI common contract definitions",
+  "description": "Reusable definitions shared by canonical scenarios, advisor inputs and advisor outputs.",
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A non-empty string."
+    },
+    "opaqueId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "An opaque identifier. Consumers must not infer game entities or semantics from its format."
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A version identifier managed by the dataset contracts."
+    },
+    "task": {
+      "type": "string",
+      "description": "The advisor task requested by the input.",
+      "enum": [
+        "COMPOSITION_PLAN",
+        "MATCHUP_PLAN",
+        "ITEMIZATION_DECISION",
+        "MACRO_PRIORITY",
+        "THREAT_ASSESSMENT",
+        "ADVICE_SUPPRESSION"
+      ]
+    },
+    "locale": {
+      "type": "string",
+      "description": "The locale in which the assistant message must be written.",
+      "enum": ["it-IT", "en-US"]
+    },
+    "unitInterval": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "A numeric score between zero and one, inclusive."
+    },
+    "nonNegativeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "A non-negative integer."
+    },
+    "stringList": {
+      "type": "array",
+      "description": "An ordered list of semantic labels.",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "opaqueIdList": {
+      "type": "array",
+      "description": "An ordered list of opaque identifiers.",
+      "items": {
+        "$ref": "#/$defs/opaqueId"
+      },
+      "uniqueItems": true
+    },
+    "safeJsonValue": {
+      "description": "A JSON value whose object keys cannot use volatile game-data field names.",
+      "oneOf": [
+        {"type": ["string", "number", "integer", "boolean", "null"]},
+        {
+          "type": "array",
+          "items": {"$ref": "#/$defs/safeJsonValue"}
+        },
+        {
+          "type": "object",
+          "propertyNames": {"$ref": "#/$defs/nonVolatilePropertyName"},
+          "additionalProperties": {"$ref": "#/$defs/safeJsonValue"}
+        }
+      ]
+    },
+    "nonVolatilePropertyName": {
+      "type": "string",
+      "not": {
+        "enum": [
+          "championName",
+          "itemName",
+          "runeName",
+          "patchVersion",
+          "winRate",
+          "pickRate",
+          "tier",
+          "cooldownSeconds",
+          "objectiveRespawnSeconds"
+        ]
+      },
+      "description": "An object property name excluding fields whose values are volatile across game-data releases."
+    },
+    "context": {
+      "type": "object",
+      "description": "Freshness and completeness metadata for the observed game context.",
+      "properties": {
+        "observedAtGameSecond": {
+          "$ref": "#/$defs/nonNegativeInteger",
+          "description": "Game time, in seconds, at which the context was observed."
+        },
+        "freshnessSeconds": {
+          "$ref": "#/$defs/nonNegativeInteger",
+          "description": "Age, in seconds, of the context when the request was created."
+        },
+        "completeness": {
+          "$ref": "#/$defs/unitInterval",
+          "description": "Estimated proportion of required context that is available."
+        },
+        "uncertainFields": {
+          "type": "array",
+          "description": "JSON-style field paths whose values are uncertain.",
+          "items": {"$ref": "#/$defs/nonEmptyString"},
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "observedAtGameSecond",
+        "freshnessSeconds",
+        "completeness",
+        "uncertainFields"
+      ],
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "description": "A single evidence record supplied to the advisor.",
+      "properties": {
+        "evidenceId": {
+          "$ref": "#/$defs/opaqueId",
+          "description": "Opaque identifier used to cite this evidence."
+        },
+        "type": {
+          "$ref": "#/$defs/nonEmptyString",
+          "description": "The provenance class of the evidence."
+        },
+        "confidence": {
+          "$ref": "#/$defs/unitInterval",
+          "description": "Estimated reliability of this evidence."
+        },
+        "freshnessSeconds": {
+          "$ref": "#/$defs/nonNegativeInteger",
+          "description": "Age, in seconds, of this evidence."
+        },
+        "fact": {
+          "$ref": "#/$defs/safeJsonValue",
+          "description": "Structured, non-volatile facts carried by this evidence."
+        }
+      },
+      "required": ["evidenceId", "type", "confidence", "freshnessSeconds", "fact"],
+      "additionalProperties": false
+    },
+    "recentAdvice": {
+      "type": "object",
+      "description": "A previously emitted advice record used for repetition control.",
+      "properties": {
+        "actionId": {
+          "$ref": "#/$defs/opaqueId",
+          "description": "Opaque action identifier used by the prior advice."
+        },
+        "category": {
+          "$ref": "#/$defs/task",
+          "description": "Task category of the prior advice."
+        },
+        "decision": {
+          "type": "string",
+          "description": "Decision made for the prior advice.",
+          "enum": ["SHOW", "SUPPRESS", "REQUEST_REFRESH"]
+        },
+        "ageSeconds": {
+          "$ref": "#/$defs/nonNegativeInteger",
+          "description": "Elapsed seconds since the prior advice."
+        },
+        "reasonCodes": {
+          "$ref": "#/$defs/stringList",
+          "description": "Stable reason codes associated with the prior decision."
+        }
+      },
+      "required": ["actionId", "category", "decision", "ageSeconds", "reasonCodes"],
+      "additionalProperties": false
+    },
+    "candidateAction": {
+      "type": "object",
+      "description": "A candidate action that the advisor may select.",
+      "properties": {
+        "actionId": {
+          "$ref": "#/$defs/opaqueId",
+          "description": "Opaque identifier of the candidate action."
+        },
+        "type": {
+          "$ref": "#/$defs/nonEmptyString",
+          "description": "Semantic class of the candidate action."
+        },
+        "effects": {
+          "$ref": "#/$defs/stringList",
+          "description": "Abstract effects expected from the action."
+        },
+        "supportsFunctions": {
+          "$ref": "#/$defs/stringList",
+          "description": "Abstract team or player functions supported by the action."
+        },
+        "evidenceIds": {
+          "$ref": "#/$defs/opaqueIdList",
+          "description": "Opaque identifiers of evidence supporting the action."
+        },
+        "feasibility": {
+          "$ref": "#/$defs/unitInterval",
+          "description": "Estimated feasibility of executing the action."
+        },
+        "resourceRequired": {
+          "$ref": "#/$defs/nonNegativeInteger",
+          "description": "Abstract non-negative resource amount needed for the action."
+        }
+      },
+      "required": [
+        "actionId",
+        "type",
+        "effects",
+        "supportsFunctions",
+        "evidenceIds",
+        "feasibility"
+      ],
+      "additionalProperties": false
+    },
+    "teamPlan": {
+      "type": "object",
+      "description": "An abstract description of the team's strategic plan.",
+      "properties": {
+        "compositionTags": {
+          "$ref": "#/$defs/stringList",
+          "description": "Abstract tags describing the team composition."
+        },
+        "missingFunctions": {
+          "$ref": "#/$defs/stringList",
+          "description": "Strategic functions currently missing from the plan."
+        },
+        "primaryWinCondition": {
+          "$ref": "#/$defs/nonEmptyString",
+          "description": "The abstract primary win condition."
+        }
+      },
+      "required": ["compositionTags", "missingFunctions", "primaryWinCondition"],
+      "additionalProperties": false
+    },
+    "damageProfile": {
+      "type": "object",
+      "description": "Normalized distribution of abstract damage types.",
+      "properties": {
+        "physical": {
+          "$ref": "#/$defs/unitInterval",
+          "description": "Physical component of the damage profile."
+        },
+        "magic": {
+          "$ref": "#/$defs/unitInterval",
+          "description": "Magic component of the damage profile."
+        },
+        "true": {
+          "$ref": "#/$defs/unitInterval",
+          "description": "True-damage component of the damage profile."
+        }
+      },
+      "required": ["physical", "magic", "true"],
+      "additionalProperties": false
+    },
+    "threat": {
+      "type": "object",
+      "description": "An abstract hostile entity and its assessed threat characteristics.",
+      "properties": {
+        "entityId": {
+          "$ref": "#/$defs/opaqueId",
+          "description": "Opaque identifier of the hostile entity."
+        },
+        "priority": {
+          "$ref": "#/$defs/unitInterval",
+          "description": "Relative priority of the threat."
+        },
+        "patterns": {
+          "$ref": "#/$defs/stringList",
+          "description": "Abstract behavior or threat patterns."
+        },
+        "damageProfile": {
+          "$ref": "#/$defs/damageProfile",
+          "description": "Normalized abstract damage distribution."
+        },
+        "evidenceIds": {
+          "$ref": "#/$defs/opaqueIdList",
+          "description": "Opaque evidence identifiers supporting the assessment."
+        }
+      },
+      "required": ["entityId", "priority", "patterns", "damageProfile", "evidenceIds"],
+      "additionalProperties": false
+    }
+  }
+}

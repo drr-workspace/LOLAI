@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "canonical-scenario.schema.json",
+  "title": "LOLAI canonical scenario",
+  "description": "A canonical training scenario including generation, lineage, split and review metadata that is not exposed to the model.",
+  "type": "object",
+  "properties": {
+    "scenarioId": {"$ref": "common.schema.json#/$defs/opaqueId", "description": "Globally unique opaque identifier of the scenario."},
+    "familyId": {"$ref": "common.schema.json#/$defs/opaqueId", "description": "Opaque identifier grouping scenarios from the same semantic family."},
+    "splitGroup": {"$ref": "common.schema.json#/$defs/opaqueId", "description": "Opaque group used to keep related scenarios in the same dataset split."},
+    "sourceType": {
+      "type": "string",
+      "description": "How the scenario was produced or curated.",
+      "enum": ["SYNTHETIC", "COUNTERFACTUAL", "ADVERSARIAL", "TEMPORAL", "REALISTIC_ABSTRACTED", "HUMAN_REVIEWED"]
+    },
+    "seed": {"type": "integer", "description": "Deterministic generation seed for reproducibility."},
+    "parentScenarioId": {
+      "description": "Opaque identifier of the source scenario, or null for a root scenario.",
+      "oneOf": [{"$ref": "common.schema.json#/$defs/opaqueId"}, {"type": "null"}]
+    },
+    "counterfactualPairId": {
+      "description": "Opaque identifier shared by a counterfactual pair, or null when not applicable.",
+      "oneOf": [{"$ref": "common.schema.json#/$defs/opaqueId"}, {"type": "null"}]
+    },
+    "episodeId": {
+      "description": "Opaque temporal episode identifier, or null for a standalone scenario.",
+      "oneOf": [{"$ref": "common.schema.json#/$defs/opaqueId"}, {"type": "null"}]
+    },
+    "episodeStep": {
+      "description": "Zero-based position within a temporal episode, or null for a standalone scenario.",
+      "oneOf": [{"$ref": "common.schema.json#/$defs/nonNegativeInteger"}, {"type": "null"}]
+    },
+    "causalSignature": {"$ref": "common.schema.json#/$defs/nonEmptyString", "description": "Stable signature describing the causal factors that determine the expected decision."},
+    "reviewStatus": {
+      "type": "string",
+      "description": "Current state of the scenario review workflow.",
+      "enum": ["GENERATED", "AUTO_VALIDATED", "NEEDS_REVIEW", "APPROVED", "REJECTED"]
+    },
+    "input": {"$ref": "advisor-input.schema.json", "description": "Model-visible advisor input."},
+    "expectedOutput": {"$ref": "advisor-output.schema.json", "description": "Expected model output for this scenario."}
+  },
+  "required": [
+    "scenarioId",
+    "familyId",
+    "splitGroup",
+    "sourceType",
+    "seed",
+    "parentScenarioId",
+    "counterfactualPairId",
+    "episodeId",
+    "episodeStep",
+    "causalSignature",
+    "reviewStatus",
+    "input",
+    "expectedOutput"
+  ],
+  "propertyNames": {"$ref": "common.schema.json#/$defs/nonVolatilePropertyName"},
+  "additionalProperties": false
+}

@@ -1,0 +1,18 @@
+{
+  "ontologyVersion": "1.0.0",
+  "values": [
+    {"id": "ACTION_COMPLETED", "description": "Re-evaluate after the advised action completes.", "stable": true},
+    {"id": "ALLY_OR_ENEMY_STATE_CHANGED", "description": "Re-evaluate when a relevant entity state changes.", "stable": true},
+    {"id": "CONTEXT_REFRESHED", "description": "Re-evaluate after obtaining refreshed context.", "stable": true},
+    {"id": "INVENTORY_CHANGED", "description": "Re-evaluate when abstract inventory state changes.", "stable": true},
+    {"id": "NEW_RELIABLE_EVIDENCE", "description": "Re-evaluate when new sufficiently reliable evidence arrives.", "stable": true},
+    {"id": "OBJECTIVE_STATE_CHANGED", "description": "Re-evaluate when an objective opportunity changes.", "stable": true},
+    {"id": "PRIMARY_THREAT_CHANGED", "description": "Re-evaluate when the highest-priority threat changes.", "stable": true},
+    {"id": "RESOURCE_CHANGED_SIGNIFICANTLY", "description": "Re-evaluate after a material abstract resource change.", "stable": true},
+    {"id": "SCOREBOARD_UPDATED", "description": "Re-evaluate when aggregate match state is updated.", "stable": true},
+    {"id": "TEAM_WIN_CONDITION_CHANGED", "description": "Re-evaluate when the team's primary win condition changes.", "stable": true},
+    {"id": "TIME_WINDOW_EXPIRED", "description": "Re-evaluate when the current advice validity window expires.", "stable": true},
+    {"id": "VISION_STATE_CHANGED", "description": "Re-evaluate when information coverage changes.", "stable": true},
+    {"id": "WAVE_STATE_CHANGED", "description": "Re-evaluate when a relevant wave state changes.", "stable": true}
+  ]
+}

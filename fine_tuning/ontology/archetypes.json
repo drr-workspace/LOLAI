@@ -1,0 +1,19 @@
+{
+  "ontologyVersion": "1.0.0",
+  "values": [
+    {"id": "DISENGAGE", "description": "Composition prefers preventing or leaving engagements.", "stable": true},
+    {"id": "DIVE", "description": "Composition prefers coordinated access to protected units.", "stable": true},
+    {"id": "EARLY_PRESSURE", "description": "Composition prefers generating value early in progression.", "stable": true},
+    {"id": "FRONT_TO_BACK", "description": "Composition prefers resolving engagements through the nearest threats first.", "stable": true},
+    {"id": "GLOBAL_PRESSURE", "description": "Composition can influence separated map regions.", "stable": true},
+    {"id": "OBJECTIVE_CONTROL", "description": "Composition prefers controlling objective opportunities.", "stable": true},
+    {"id": "PICK", "description": "Composition prefers isolating targets before full engagement.", "stable": true},
+    {"id": "POKE", "description": "Composition prefers applying pressure before commitment.", "stable": true},
+    {"id": "PROTECT_CARRY", "description": "Composition prefers enabling and protecting a primary damage source.", "stable": true},
+    {"id": "SCALING", "description": "Composition gains relative strength through progression.", "stable": true},
+    {"id": "SIEGE", "description": "Composition prefers pressure against defended positions.", "stable": true},
+    {"id": "SKIRMISH", "description": "Composition prefers small and fluid engagements.", "stable": true},
+    {"id": "SPLIT_PRESSURE", "description": "Composition prefers simultaneous pressure in separated regions.", "stable": true},
+    {"id": "WOMBO_COMBO", "description": "Composition prefers combining complementary area effects.", "stable": true}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "ontologyVersion": "1.0.0",
+  "values": [
+    {"id": "LOW", "description": "Advice has low delivery urgency.", "stable": true},
+    {"id": "MEDIUM", "description": "Advice has normal delivery urgency.", "stable": true},
+    {"id": "HIGH", "description": "Advice has high delivery urgency.", "stable": true}
+  ]
+}

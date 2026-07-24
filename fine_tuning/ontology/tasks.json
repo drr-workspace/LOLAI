@@ -1,0 +1,11 @@
+{
+  "ontologyVersion": "1.0.0",
+  "values": [
+    {"id": "COMPOSITION_PLAN", "description": "Selects an abstract plan from allied and opposing composition properties.", "stable": true},
+    {"id": "MATCHUP_PLAN", "description": "Selects an abstract plan for the current lane or direct-opponent state.", "stable": true},
+    {"id": "ITEMIZATION_DECISION", "description": "Selects an abstract resource or itemization action from strategic needs.", "stable": true},
+    {"id": "MACRO_PRIORITY", "description": "Selects the highest-value abstract map action.", "stable": true},
+    {"id": "THREAT_ASSESSMENT", "description": "Selects a response to prioritized abstract threats.", "stable": true},
+    {"id": "ADVICE_SUPPRESSION", "description": "Determines whether candidate advice should be delivered.", "stable": true}
+  ]
+}

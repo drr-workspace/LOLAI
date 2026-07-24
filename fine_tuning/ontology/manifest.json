@@ -1,0 +1,18 @@
+{
+  "ontologyVersion": "1.0.0",
+  "values": [
+    {"id": "tasks", "description": "Advisor task registry.", "stable": true, "file": "tasks.json"},
+    {"id": "decisions", "description": "Advisor decision registry.", "stable": true, "file": "decisions.json"},
+    {"id": "priorities", "description": "Advice priority registry.", "stable": true, "file": "priorities.json"},
+    {"id": "action-types", "description": "Abstract action type registry.", "stable": true, "file": "action-types.json"},
+    {"id": "reason-codes", "description": "Decision reason-code registry.", "stable": true, "file": "reason-codes.json"},
+    {"id": "recheck-triggers", "description": "Decision recheck-trigger registry.", "stable": true, "file": "recheck-triggers.json"},
+    {"id": "team-functions", "description": "Abstract team function registry.", "stable": true, "file": "team-functions.json"},
+    {"id": "threat-patterns", "description": "Abstract threat pattern registry.", "stable": true, "file": "threat-patterns.json"},
+    {"id": "archetypes", "description": "Abstract composition archetype registry.", "stable": true, "file": "archetypes.json"},
+    {"id": "wave-states", "description": "Abstract wave-state registry.", "stable": true, "file": "wave-states.json"},
+    {"id": "evidence-types", "description": "Evidence provenance category registry.", "stable": true, "file": "evidence-types.json"},
+    {"id": "source-types", "description": "Canonical scenario source-type registry.", "stable": true, "file": "source-types.json"},
+    {"id": "review-statuses", "description": "Canonical scenario review-status registry.", "stable": true, "file": "review-statuses.json"}
+  ]
+}

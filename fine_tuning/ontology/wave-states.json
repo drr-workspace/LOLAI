@@ -1,0 +1,16 @@
+{
+  "ontologyVersion": "1.0.0",
+  "values": [
+    {"id": "BOUNCING_AWAY_FROM_SELF", "description": "Wave direction has reversed and is moving away from the player.", "stable": true},
+    {"id": "BOUNCING_TO_SELF", "description": "Wave direction has reversed and is moving toward the player.", "stable": true},
+    {"id": "CRASHED_AGAINST_SELF", "description": "Opposing wave has reached the player's defended boundary.", "stable": true},
+    {"id": "CRASHED_BY_SELF", "description": "Allied wave has reached the opposing defended boundary.", "stable": true},
+    {"id": "FAST_PUSH_AGAINST_SELF", "description": "Opposing wave is advancing rapidly.", "stable": true},
+    {"id": "FAST_PUSH_FOR_SELF", "description": "Allied wave is advancing rapidly.", "stable": true},
+    {"id": "FROZEN_AGAINST_SELF", "description": "Wave is held in a location unfavorable to the player.", "stable": true},
+    {"id": "FROZEN_FOR_SELF", "description": "Wave is held in a location favorable to the player.", "stable": true},
+    {"id": "NEUTRAL", "description": "Neither side has a material wave-direction advantage.", "stable": true},
+    {"id": "SLOW_PUSH_AGAINST_SELF", "description": "Opposing wave is accumulating gradually.", "stable": true},
+    {"id": "SLOW_PUSH_FOR_SELF", "description": "Allied wave is accumulating gradually.", "stable": true}
+  ]
+}

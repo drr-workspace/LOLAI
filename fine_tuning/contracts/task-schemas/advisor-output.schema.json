@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "advisor-output.schema.json",
+  "title": "LOLAI advisor output",
+  "description": "The JSON object serialized into the assistant message for an advisor decision.",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "$ref": "common.schema.json#/$defs/version",
+      "description": "Version of this advisor-output contract."
+    },
+    "decision": {
+      "type": "string",
+      "description": "Whether advice should be shown, suppressed, or deferred until context refresh.",
+      "enum": ["SHOW", "SUPPRESS", "REQUEST_REFRESH"]
+    },
+    "category": {
+      "$ref": "common.schema.json#/$defs/task",
+      "description": "Task category to which this decision belongs."
+    },
+    "primaryActionId": {
+      "description": "Opaque identifier of the selected action, or null when no action is emitted.",
+      "oneOf": [
+        {"$ref": "common.schema.json#/$defs/opaqueId"},
+        {"type": "null"}
+      ]
+    },
+    "alternativeActionIds": {
+      "$ref": "common.schema.json#/$defs/opaqueIdList",
+      "description": "Opaque identifiers of viable alternative actions."
+    },
+    "priority": {
+      "type": "string",
+      "description": "Relative delivery priority of the advice.",
+      "enum": ["LOW", "MEDIUM", "HIGH"]
+    },
+    "confidence": {
+      "$ref": "common.schema.json#/$defs/unitInterval",
+      "description": "Confidence in the complete decision."
+    },
+    "reasonCodes": {
+      "allOf": [
+        {"$ref": "common.schema.json#/$defs/stringList"},
+        {"minItems": 1}
+      ],
+      "description": "Stable machine-readable reasons for the decision."
+    },
+    "evidenceIds": {
+      "$ref": "common.schema.json#/$defs/opaqueIdList",
+      "description": "Opaque identifiers of evidence used by the decision."
+    },
+    "message": {
+      "type": "string",
+      "maxLength": 180,
+      "description": "Concise localized advice text; empty for suppressed or refresh decisions."
+    },
+    "validForSeconds": {
+      "$ref": "common.schema.json#/$defs/nonNegativeInteger",
+      "description": "Maximum time in seconds for which the decision remains valid."
+    },
+    "recheckTriggers": {
+      "allOf": [
+        {"$ref": "common.schema.json#/$defs/stringList"},
+        {"minItems": 1}
+      ],
+      "description": "Stable events that require the decision to be evaluated again."
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "decision",
+    "category",
+    "primaryActionId",
+    "alternativeActionIds",
+    "priority",
+    "confidence",
+    "reasonCodes",
+    "evidenceIds",
+    "message",
+    "validForSeconds",
+    "recheckTriggers"
+  ],
+  "allOf": [
+    {
+      "if": {"properties": {"decision": {"const": "SHOW"}}, "required": ["decision"]},
+      "then": {
+        "properties": {
+          "primaryActionId": {"$ref": "common.schema.json#/$defs/opaqueId"},
+          "message": {"type": "string", "minLength": 1, "maxLength": 180},
+          "evidenceIds": {
+            "allOf": [
+              {"$ref": "common.schema.json#/$defs/opaqueIdList"},
+              {"minItems": 1}
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"decision": {"enum": ["SUPPRESS", "REQUEST_REFRESH"]}},
+        "required": ["decision"]
+      },
+      "then": {
+        "properties": {
+          "primaryActionId": {"type": "null"},
+          "alternativeActionIds": {"type": "array", "maxItems": 0},
+          "message": {"const": ""}
+        }
+      }
+    }
+  ],
+  "propertyNames": {"$ref": "common.schema.json#/$defs/nonVolatilePropertyName"},
+  "additionalProperties": false
+}

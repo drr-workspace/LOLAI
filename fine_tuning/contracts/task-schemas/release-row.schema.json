@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "release-row.schema.json",
+  "title": "LOLAI release JSONL row",
+  "description": "The exact three-message envelope accepted in release JSONL files.",
+  "type": "object",
+  "properties": {
+    "messages": {
+      "type": "array",
+      "description": "Exactly one system, one user and one assistant message in that order.",
+      "prefixItems": [
+        {
+          "type": "object",
+          "description": "System instruction message.",
+          "properties": {
+            "role": {"const": "system", "description": "Fixed system role."},
+            "content": {"type": "string", "description": "System instruction text."}
+          },
+          "required": ["role", "content"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "description": "User request message.",
+          "properties": {
+            "role": {"const": "user", "description": "Fixed user role."},
+            "content": {"type": "string", "description": "Serialized advisor-input JSON."}
+          },
+          "required": ["role", "content"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "description": "Assistant decision message.",
+          "properties": {
+            "role": {"const": "assistant", "description": "Fixed assistant role."},
+            "content": {"type": "string", "description": "Serialized advisor-output JSON."}
+          },
+          "required": ["role", "content"],
+          "additionalProperties": false
+        }
+      ],
+      "minItems": 3,
+      "maxItems": 3
+    }
+  },
+  "required": ["messages"],
+  "additionalProperties": false
+}

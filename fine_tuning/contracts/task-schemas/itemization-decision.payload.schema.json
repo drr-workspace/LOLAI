@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "itemization-decision.payload.schema.json",
+  "title": "Itemization decision payload",
+  "description": "Task-specific input payload for abstract itemization decisions.",
+  "type": "object",
+  "properties": {
+    "availableResource": {"$ref": "common.schema.json#/$defs/nonNegativeInteger", "description": "Abstract resource amount currently available."},
+    "playerFunctions": {"$ref": "common.schema.json#/$defs/stringList", "description": "Strategic functions performed by the player."},
+    "teamPlan": {"$ref": "common.schema.json#/$defs/teamPlan", "description": "Current abstract team plan."},
+    "threats": {
+      "type": "array",
+      "description": "Current abstract threat assessments.",
+      "items": {"$ref": "common.schema.json#/$defs/threat"}
+    },
+    "candidates": {
+      "type": "array",
+      "description": "Candidate itemization actions available to the advisor.",
+      "items": {
+        "allOf": [
+          {"$ref": "common.schema.json#/$defs/candidateAction"},
+          {"required": ["resourceRequired"]}
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": ["availableResource", "playerFunctions", "teamPlan", "threats", "candidates"],
+  "additionalProperties": false
+}

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 7,
+            "activePatchIndex": 17,
             "patches": [
                 {
                     "date": 1784904042206,
@@ -36,6 +36,46 @@
                 {
                     "date": 1784904908102,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,10 +31,10 @@\n # con batch_size 1; la selezione finale dipenderà comunque dagli eval.\n iters: 4800\n \n # Memoria e batch.\n-batch_size: 2\n-grad_accumulation_steps: 4\n+batch_size: 4\n+grad_accumulation_steps: 2\n max_seq_length: 3072\n grad_checkpoint: false\n \n # Qwen3-14B è dense: adattiamo gli ultimi 24 layer.\n"
+                },
+                {
+                    "date": 1784923064029,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,10 +27,10 @@\n learning_rate: 1.0e-5\n \n # Il dataset contiene 2.400 esempi.\n # 4.800 iterazioni corrispondono a due passaggi nominali sui micro-batch\n-# con batch_size 1; la selezione finale dipenderà comunque dagli eval.\n-iters: 4800\n+# con batch_size 4; la selezione finale dipenderà comunque dagli eval.\n+iters: 800\n \n # Memoria e batch.\n batch_size: 4\n grad_accumulation_steps: 2\n"
+                },
+                {
+                    "date": 1784923074260,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n seed: 42\n \n # Ottimizzatore.\n optimizer: \"adamw\"\n-learning_rate: 1.0e-5\n+learning_rate: 5.0e-5\n \n # Il dataset contiene 2.400 esempi.\n # 4.800 iterazioni corrispondono a due passaggi nominali sui micro-batch\n # con batch_size 4; la selezione finale dipenderà comunque dagli eval.\n"
+                },
+                {
+                    "date": 1784923087999,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n seed: 42\n \n # Ottimizzatore.\n optimizer: \"adamw\"\n-learning_rate: 5.0e-5\n+learning_rate: 5.0e-6\n \n # Il dataset contiene 2.400 esempi.\n # 4.800 iterazioni corrispondono a due passaggi nominali sui micro-batch\n # con batch_size 4; la selezione finale dipenderà comunque dagli eval.\n@@ -37,9 +37,9 @@\n max_seq_length: 3072\n grad_checkpoint: false\n \n # Qwen3-14B è dense: adattiamo gli ultimi 24 layer.\n-num_layers: 24\n+num_layers: 16\n \n # Calcola la loss soltanto sulla risposta assistant finale.\n mask_prompt: true\n \n"
+                },
+                {
+                    "date": 1784923120222,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n # Calcola la loss soltanto sulla risposta assistant finale.\n mask_prompt: true\n \n # Validazione e logging.\n-val_batches: 50\n+val_batches: -1\n steps_per_report: 10\n steps_per_eval: 200\n \n # Adapter e checkpoint.\n"
+                },
+                {
+                    "date": 1784923136535,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -45,9 +45,9 @@\n \n # Validazione e logging.\n val_batches: -1\n steps_per_report: 10\n-steps_per_eval: 200\n+steps_per_eval: 100\n \n # Adapter e checkpoint.\n adapter_path: \"models/adapters/qwen3-14b-lolai-v1.0.0\"\n resume_adapter_file: null\n"
+                },
+                {
+                    "date": 1784923251946,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,11 +48,11 @@\n steps_per_report: 10\n steps_per_eval: 100\n \n # Adapter e checkpoint.\n-adapter_path: \"models/adapters/qwen3-14b-lolai-v1.0.0\"\n+adapter_path: \"models/adapters/qwen3-14b-lolai-v1.0.0-short\"\n resume_adapter_file: null\n-save_every: 400\n+save_every: 100\n \n # Il test set resta isolato fino al congelamento del modello candidato.\n test: false\n test_batches: -1\n"
+                },
+                {
+                    "date": 1784923268211,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n \n # Il dataset contiene 2.400 esempi.\n # 4.800 iterazioni corrispondono a due passaggi nominali sui micro-batch\n # con batch_size 4; la selezione finale dipenderà comunque dagli eval.\n-iters: 800\n+iters: 300\n \n # Memoria e batch.\n batch_size: 4\n grad_accumulation_steps: 2\n"
+                },
+                {
+                    "date": 1784923283275,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -45,9 +45,9 @@\n \n # Validazione e logging.\n val_batches: -1\n steps_per_report: 10\n-steps_per_eval: 100\n+steps_per_eval: 50\n \n # Adapter e checkpoint.\n adapter_path: \"models/adapters/qwen3-14b-lolai-v1.0.0-short\"\n resume_adapter_file: null\n"
+                },
+                {
+                    "date": 1784923298579,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n seed: 42\n \n # Ottimizzatore.\n optimizer: \"adamw\"\n-learning_rate: 5.0e-6\n+learning_rate: 1.0e-6\n \n # Il dataset contiene 2.400 esempi.\n # 4.800 iterazioni corrispondono a due passaggi nominali sui micro-batch\n # con batch_size 4; la selezione finale dipenderà comunque dagli eval.\n@@ -50,9 +50,9 @@\n \n # Adapter e checkpoint.\n adapter_path: \"models/adapters/qwen3-14b-lolai-v1.0.0-short\"\n resume_adapter_file: null\n-save_every: 100\n+save_every: 50\n \n # Il test set resta isolato fino al congelamento del modello candidato.\n test: false\n test_batches: -1\n"
+                },
+                {
+                    "date": 1784923316851,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n seed: 42\n \n # Ottimizzatore.\n optimizer: \"adamw\"\n-learning_rate: 1.0e-6\n+learning_rate: 1.0e-5\n \n # Il dataset contiene 2.400 esempi.\n # 4.800 iterazioni corrispondono a due passaggi nominali sui micro-batch\n # con batch_size 4; la selezione finale dipenderà comunque dagli eval.\n@@ -37,9 +37,9 @@\n max_seq_length: 3072\n grad_checkpoint: false\n \n # Qwen3-14B è dense: adattiamo gli ultimi 24 layer.\n-num_layers: 16\n+num_layers: 24\n \n # Calcola la loss soltanto sulla risposta assistant finale.\n mask_prompt: true\n \n"
                 }
             ],
             "date": 1784904042206,

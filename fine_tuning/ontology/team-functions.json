@@ -1,0 +1,22 @@
+{
+  "ontologyVersion": "1.0.0",
+  "values": [
+    {"id": "BACKLINE_ACCESS", "description": "Ability to reach protected opposing units.", "stable": true},
+    {"id": "BURST_DAMAGE", "description": "Ability to deliver concentrated damage rapidly.", "stable": true},
+    {"id": "DISENGAGE", "description": "Ability to stop or leave engagements.", "stable": true},
+    {"id": "ENGAGE", "description": "Ability to initiate engagements reliably.", "stable": true},
+    {"id": "FRONTLINE", "description": "Ability to occupy space and absorb pressure.", "stable": true},
+    {"id": "OBJECTIVE_DAMAGE", "description": "Ability to convert objective opportunities quickly.", "stable": true},
+    {"id": "PEEL", "description": "Ability to protect allied units from hostile access.", "stable": true},
+    {"id": "PICK_CREATION", "description": "Ability to isolate and punish a target.", "stable": true},
+    {"id": "POKE", "description": "Ability to apply pressure before full commitment.", "stable": true},
+    {"id": "SIDE_LANE_PRESSURE", "description": "Ability to create pressure away from the group.", "stable": true},
+    {"id": "SIEGE", "description": "Ability to pressure defended positions.", "stable": true},
+    {"id": "SKIRMISHING", "description": "Ability to perform in small, fluid engagements.", "stable": true},
+    {"id": "SUSTAIN", "description": "Ability to remain effective through recovery or durability.", "stable": true},
+    {"id": "SUSTAINED_DAMAGE", "description": "Ability to deliver damage over extended engagements.", "stable": true},
+    {"id": "VISION_CONTROL", "description": "Ability to establish and deny reliable information.", "stable": true},
+    {"id": "WAVE_CLEAR", "description": "Ability to remove advancing waves efficiently.", "stable": true},
+    {"id": "ZONE_CONTROL", "description": "Ability to deny or control an area.", "stable": true}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "ontologyVersion": "1.0.0",
+  "values": [
+    {"id": "SHOW", "description": "Deliver the selected advice to the user.", "stable": true},
+    {"id": "SUPPRESS", "description": "Withhold advice because delivery would not add sufficient value.", "stable": true},
+    {"id": "REQUEST_REFRESH", "description": "Defer advice until relevant context is refreshed.", "stable": true}
+  ]
+}
