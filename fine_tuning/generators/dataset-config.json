@@ -1,0 +1,26 @@
+{
+  "datasetVersion": "2.0.0",
+  "schemaVersion": "1.0.0",
+  "ontologyVersion": "1.0.0",
+  "seed": 20260730,
+  "trainExamples": 10000,
+  "validExamples": 1500,
+  "testExamples": 1500,
+  "challengeExamples": 1500,
+  "trainSourceDistribution": {
+    "SYNTHETIC": 0.45,
+    "COUNTERFACTUAL": 0.25,
+    "TEMPORAL": 0.15,
+    "REALISTIC_ABSTRACTED": 0.10,
+    "ADVERSARIAL": 0.05
+  },
+  "decisionDistributionRanges": {
+    "SHOW": {"minimum": 0.55, "maximum": 0.65},
+    "SUPPRESS": {"minimum": 0.20, "maximum": 0.25},
+    "REQUEST_REFRESH": {"minimum": 0.15, "maximum": 0.20}
+  },
+  "locales": ["it-IT", "en-US"],
+  "approvedRealisticSources": [
+    "datasets/canonical/approved-realistic.jsonl"
+  ]
+}

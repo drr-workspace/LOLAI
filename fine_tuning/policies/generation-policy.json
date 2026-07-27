@@ -1,0 +1,28 @@
+{
+  "policyVersion": "1.0.0",
+  "ontologyVersion": "1.0.0",
+  "description": "Versioned targets and bounds for canonical scenario generation.",
+  "globalSeed": 1729,
+  "taskDistribution": {
+    "COMPOSITION_PLAN": 0.16666666666666666,
+    "MATCHUP_PLAN": 0.16666666666666666,
+    "ITEMIZATION_DECISION": 0.16666666666666666,
+    "MACRO_PRIORITY": 0.16666666666666666,
+    "THREAT_ASSESSMENT": 0.16666666666666666,
+    "ADVICE_SUPPRESSION": 0.16666666666666666
+  },
+  "decisionDistribution": {
+    "SHOW": 0.7,
+    "SUPPRESS": 0.2,
+    "REQUEST_REFRESH": 0.1
+  },
+  "candidateCount": {"minimum": 1, "maximum": 5},
+  "evidenceCount": {"minimum": 1, "maximum": 10},
+  "scenarioPercentages": {
+    "counterfactual": 0.2,
+    "adversarial": 0.1,
+    "temporalEpisode": 0.1,
+    "realisticAbstracted": 0.3,
+    "humanReview": 0.1
+  }
+}

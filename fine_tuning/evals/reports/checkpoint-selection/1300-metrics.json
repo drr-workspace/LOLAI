@@ -1,0 +1,191 @@
+{
+  "examples": 1500,
+  "metrics": {
+    "abstention": {
+      "falseShowRate": 0.2370617696160267,
+      "requestRefresh": {
+        "f1": 0.6657571623465212,
+        "precision": 0.5158562367864693,
+        "recall": 0.9384615384615385
+      },
+      "suppress": {
+        "f1": 0.44742729306487694,
+        "precision": 0.36036036036036034,
+        "recall": 0.5899705014749262
+      },
+      "unnecessaryAdviceRate": 0.3873473917869034
+    },
+    "calibration": {
+      "accuracyPerConfidenceBand": {
+        "0.0-0.1": 0.0,
+        "0.1-0.2": 1.0,
+        "0.2-0.3": 0.0,
+        "0.3-0.4": 1.0,
+        "0.4-0.5": 0.0,
+        "0.5-0.6": 0.0,
+        "0.6-0.7": 0.9928571428571429,
+        "0.7-0.8": 1.0,
+        "0.8-0.9": 0.4431643625192012,
+        "0.9-1.0": 1.0
+      },
+      "confidenceBins": [
+        {
+          "accuracy": 0.0,
+          "count": 0,
+          "maximum": 0.1,
+          "meanConfidence": 0.0,
+          "minimum": 0.0
+        },
+        {
+          "accuracy": 1.0,
+          "count": 1,
+          "maximum": 0.2,
+          "meanConfidence": 0.1,
+          "minimum": 0.1
+        },
+        {
+          "accuracy": 0.0,
+          "count": 0,
+          "maximum": 0.3,
+          "meanConfidence": 0.0,
+          "minimum": 0.2
+        },
+        {
+          "accuracy": 1.0,
+          "count": 14,
+          "maximum": 0.4,
+          "meanConfidence": 0.37,
+          "minimum": 0.3
+        },
+        {
+          "accuracy": 0.0,
+          "count": 0,
+          "maximum": 0.5,
+          "meanConfidence": 0.0,
+          "minimum": 0.4
+        },
+        {
+          "accuracy": 0.0,
+          "count": 0,
+          "maximum": 0.6,
+          "meanConfidence": 0.0,
+          "minimum": 0.5
+        },
+        {
+          "accuracy": 0.9928571428571429,
+          "count": 140,
+          "maximum": 0.7,
+          "meanConfidence": 0.6445714285714287,
+          "minimum": 0.6
+        },
+        {
+          "accuracy": 1.0,
+          "count": 39,
+          "maximum": 0.8,
+          "meanConfidence": 0.7115384615384616,
+          "minimum": 0.7
+        },
+        {
+          "accuracy": 0.4431643625192012,
+          "count": 1302,
+          "maximum": 0.9,
+          "meanConfidence": 0.8471121351766513,
+          "minimum": 0.8
+        },
+        {
+          "accuracy": 1.0,
+          "count": 1,
+          "maximum": 1.0,
+          "meanConfidence": 0.9,
+          "minimum": 0.9
+        }
+      ],
+      "expectedCalibrationError": 0.397975951904,
+      "meanConfidenceByDecision": {
+        "REQUEST_REFRESH": 0.7562579281183932,
+        "SHOW": 0.8604051172707888,
+        "SUPPRESS": 0.8394054054054054
+      }
+    },
+    "counterfactual": {
+      "completePairCount": 0,
+      "counterfactualConsistency": null,
+      "expectedChangeAccuracy": null,
+      "invariantPairConsistency": null,
+      "invariantPairCount": 0
+    },
+    "decision": {
+      "acceptableActionRate": 0.5226666666666666,
+      "decisionAccuracy": 0.514,
+      "primaryActionIdAccuracy": 0.522,
+      "priorityAccuracy": 0.5173333333333333,
+      "reasonCodeF1": 0.47343363168920205,
+      "reasonCodePrecision": 0.5362381363244176,
+      "reasonCodeRecall": 0.4237981588816911
+    },
+    "grounding": {
+      "inventedActionRate": 0.0,
+      "inventedEvidenceRate": 0.0,
+      "unsupportedClaimRate": 0.0,
+      "unsupportedReasonCodeRate": 0.0012942191544434857
+    },
+    "robustness": {
+      "candidateOrderInvariance": null,
+      "candidateOrderInvariancePairCount": 0,
+      "identifierRenamingInvariance": null,
+      "identifierRenamingInvariancePairCount": 0,
+      "injectionResistance": null,
+      "injectionResistancePairCount": 0,
+      "irrelevantEvidenceResistance": null,
+      "irrelevantEvidenceResistancePairCount": 0,
+      "localeSwitchCorrectness": null,
+      "localeSwitchCorrectnessPairCount": 0,
+      "staleVersusFreshPreference": null,
+      "staleVersusFreshPreferencePairCount": 0
+    },
+    "structural": {
+      "jsonValidity": 0.998,
+      "localeCompliance": 0.998,
+      "maximumMessageLengthCompliance": 0.998,
+      "schemaConformance": 0.998
+    }
+  },
+  "qualityGates": [
+    {
+      "actual": 0.998,
+      "metric": "jsonValidity",
+      "operator": "minimum",
+      "passed": false,
+      "threshold": 1.0
+    },
+    {
+      "actual": 0.998,
+      "metric": "schemaConformance",
+      "operator": "minimum",
+      "passed": false,
+      "threshold": 1.0
+    },
+    {
+      "actual": 0.0,
+      "metric": "inventedActionRate",
+      "operator": "maximum",
+      "passed": true,
+      "threshold": 0.0
+    },
+    {
+      "actual": 0.0,
+      "metric": "inventedEvidenceRate",
+      "operator": "maximum",
+      "passed": true,
+      "threshold": 0.0
+    },
+    {
+      "actual": 0.0,
+      "metric": "unsupportedClaimRate",
+      "operator": "maximum",
+      "passed": true,
+      "threshold": 0.01
+    }
+  ],
+  "qualityGatesPassed": false
+}

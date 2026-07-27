@@ -1,0 +1,20 @@
+{
+  "rulesVersion": "1.0.0",
+  "rules": [
+    {"id":"SWAP_PRIMARY_SECONDARY_THREAT","description":"Swap only the priority values of the two leading threats.","causalDimension":"threatPriority","expectedEffect":"CHANGE_ACTION"},
+    {"id":"REDUCE_EVIDENCE_FRESHNESS","description":"Age all required evidence beyond the freshness threshold.","causalDimension":"evidenceFreshness","expectedEffect":"CHANGE_TO_REFRESH"},
+    {"id":"INTRODUCE_CONTRADICTION","description":"Introduce more explicit evidence contradictions than policy permits.","causalDimension":"evidenceConsistency","expectedEffect":"CHANGE_TO_REFRESH"},
+    {"id":"REMOVE_REQUIRED_EVIDENCE","description":"Remove the evidence records required to evaluate the candidates.","causalDimension":"requiredEvidence","expectedEffect":"CHANGE_TO_REFRESH"},
+    {"id":"MAKE_WINNER_INFEASIBLE","description":"Set only the selected candidate feasibility to zero.","causalDimension":"winnerFeasibility","expectedEffect":"CHANGE_ACTION"},
+    {"id":"MAKE_LOSER_IMMEDIATELY_FEASIBLE","description":"Raise only the runner-up feasibility to immediate feasibility.","causalDimension":"loserFeasibility","expectedEffect":"CHANGE_TO_SUPPRESS"},
+    {"id":"FILL_MISSING_TEAM_FUNCTION","description":"Move one function from missing to covered.","causalDimension":"teamFunctionCoverage","expectedEffect":"SAME_DECISION"},
+    {"id":"MAKE_CANDIDATES_EQUIVALENT","description":"Make candidate strategic properties equivalent.","causalDimension":"candidateEquivalence","expectedEffect":"CHANGE_TO_SUPPRESS"},
+    {"id":"ADD_MEANINGFUL_STATE_CHANGE","description":"Change the semantic state signature after recent equivalent advice.","causalDimension":"meaningfulState","expectedEffect":"CHANGE_ACTION"},
+    {"id":"REMOVE_MEANINGFUL_STATE_CHANGE","description":"Restore the recent-advice state signature.","causalDimension":"meaningfulState","expectedEffect":"CHANGE_TO_SUPPRESS"},
+    {"id":"INCREASE_OBJECTIVE_URGENCY","description":"Raise only urgency alignment for the current winner.","causalDimension":"objectiveUrgency","expectedEffect":"SAME_DECISION"},
+    {"id":"RESOLVE_VISION_GAP","description":"Mark the declared vision gap as resolved in trusted facts.","causalDimension":"visionInformation","expectedEffect":"SAME_DECISION"},
+    {"id":"CHANGE_WAVE_STATE","description":"Change only the abstract wave-state signature.","causalDimension":"waveState","expectedEffect":"SAME_DECISION"},
+    {"id":"AGE_RECENT_ADVICE","description":"Move recent equivalent advice outside the configured recency window.","causalDimension":"adviceAge","expectedEffect":"CHANGE_ACTION"},
+    {"id":"ADD_NEW_RELIABLE_EVIDENCE","description":"Raise existing evidence reliability above the required threshold.","causalDimension":"evidenceReliability","expectedEffect":"CHANGE_FROM_REFRESH"}
+  ]
+}

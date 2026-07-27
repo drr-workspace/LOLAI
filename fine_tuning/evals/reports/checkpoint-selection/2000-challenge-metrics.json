@@ -1,0 +1,191 @@
+{
+  "examples": 1500,
+  "metrics": {
+    "abstention": {
+      "falseShowRate": 0.03672787979966611,
+      "requestRefresh": {
+        "f1": 0.6496598639455782,
+        "precision": 0.5858895705521472,
+        "recall": 0.7290076335877863
+      },
+      "suppress": {
+        "f1": 0.5893416927899687,
+        "precision": 0.45483870967741935,
+        "recall": 0.8367952522255193
+      },
+      "unnecessaryAdviceRate": 0.31076581576026635
+    },
+    "calibration": {
+      "accuracyPerConfidenceBand": {
+        "0.0-0.1": 0.0,
+        "0.1-0.2": 0.0,
+        "0.2-0.3": 0.0,
+        "0.3-0.4": 1.0,
+        "0.4-0.5": 0.0,
+        "0.5-0.6": 1.0,
+        "0.6-0.7": 0.08888888888888889,
+        "0.7-0.8": 0.5317286652078774,
+        "0.8-0.9": 0.778642936596218,
+        "0.9-1.0": 0.0
+      },
+      "confidenceBins": [
+        {
+          "accuracy": 0.0,
+          "count": 0,
+          "maximum": 0.1,
+          "meanConfidence": 0.0,
+          "minimum": 0.0
+        },
+        {
+          "accuracy": 0.0,
+          "count": 0,
+          "maximum": 0.2,
+          "meanConfidence": 0.0,
+          "minimum": 0.1
+        },
+        {
+          "accuracy": 0.0,
+          "count": 0,
+          "maximum": 0.3,
+          "meanConfidence": 0.0,
+          "minimum": 0.2
+        },
+        {
+          "accuracy": 1.0,
+          "count": 46,
+          "maximum": 0.4,
+          "meanConfidence": 0.37,
+          "minimum": 0.3
+        },
+        {
+          "accuracy": 0.0,
+          "count": 0,
+          "maximum": 0.5,
+          "meanConfidence": 0.0,
+          "minimum": 0.4
+        },
+        {
+          "accuracy": 1.0,
+          "count": 8,
+          "maximum": 0.6,
+          "meanConfidence": 0.5874999999999999,
+          "minimum": 0.5
+        },
+        {
+          "accuracy": 0.08888888888888889,
+          "count": 90,
+          "maximum": 0.7,
+          "meanConfidence": 0.6795555555555556,
+          "minimum": 0.6
+        },
+        {
+          "accuracy": 0.5317286652078774,
+          "count": 457,
+          "maximum": 0.8,
+          "meanConfidence": 0.7630415754923413,
+          "minimum": 0.7
+        },
+        {
+          "accuracy": 0.778642936596218,
+          "count": 899,
+          "maximum": 0.9,
+          "meanConfidence": 0.8512124582869856,
+          "minimum": 0.8
+        },
+        {
+          "accuracy": 0.0,
+          "count": 0,
+          "maximum": 1.0,
+          "meanConfidence": 0.0,
+          "minimum": 0.9
+        }
+      ],
+      "expectedCalibrationError": 0.170926666667,
+      "meanConfidenceByDecision": {
+        "REQUEST_REFRESH": 0.6685889570552147,
+        "SHOW": 0.8682490974729242,
+        "SUPPRESS": 0.803
+      }
+    },
+    "counterfactual": {
+      "completePairCount": 0,
+      "counterfactualConsistency": null,
+      "expectedChangeAccuracy": null,
+      "invariantPairConsistency": null,
+      "invariantPairCount": 0
+    },
+    "decision": {
+      "acceptableActionRate": 0.7393333333333333,
+      "decisionAccuracy": 0.67,
+      "primaryActionIdAccuracy": 0.7373333333333333,
+      "priorityAccuracy": 0.7293333333333333,
+      "reasonCodeF1": 0.6751499727322305,
+      "reasonCodePrecision": 0.7345727848101266,
+      "reasonCodeRecall": 0.6246215943491423
+    },
+    "grounding": {
+      "inventedActionRate": 0.0,
+      "inventedEvidenceRate": 0.0,
+      "unsupportedClaimRate": 0.0,
+      "unsupportedReasonCodeRate": 0.00435126582278481
+    },
+    "robustness": {
+      "candidateOrderInvariance": null,
+      "candidateOrderInvariancePairCount": 0,
+      "identifierRenamingInvariance": null,
+      "identifierRenamingInvariancePairCount": 0,
+      "injectionResistance": null,
+      "injectionResistancePairCount": 0,
+      "irrelevantEvidenceResistance": null,
+      "irrelevantEvidenceResistancePairCount": 0,
+      "localeSwitchCorrectness": null,
+      "localeSwitchCorrectnessPairCount": 0,
+      "staleVersusFreshPreference": null,
+      "staleVersusFreshPreferencePairCount": 0
+    },
+    "structural": {
+      "jsonValidity": 1.0,
+      "localeCompliance": 1.0,
+      "maximumMessageLengthCompliance": 1.0,
+      "schemaConformance": 0.9993333333333333
+    }
+  },
+  "qualityGates": [
+    {
+      "actual": 1.0,
+      "metric": "jsonValidity",
+      "operator": "minimum",
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "actual": 0.9993333333333333,
+      "metric": "schemaConformance",
+      "operator": "minimum",
+      "passed": false,
+      "threshold": 1.0
+    },
+    {
+      "actual": 0.0,
+      "metric": "inventedActionRate",
+      "operator": "maximum",
+      "passed": true,
+      "threshold": 0.0
+    },
+    {
+      "actual": 0.0,
+      "metric": "inventedEvidenceRate",
+      "operator": "maximum",
+      "passed": true,
+      "threshold": 0.0
+    },
+    {
+      "actual": 0.0,
+      "metric": "unsupportedClaimRate",
+      "operator": "maximum",
+      "passed": true,
+      "threshold": 0.01
+    }
+  ],
+  "qualityGatesPassed": false
+}

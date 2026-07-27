@@ -1,0 +1,22 @@
+{
+  "policyVersion": "1.0.0",
+  "ontologyVersion": "1.0.0",
+  "description": "Leakage-resistant grouped split policy for canonical scenarios.",
+  "strategy": "GROUPED_DETERMINISTIC",
+  "allowRandomPerRow": false,
+  "groupKeys": ["familyId", "splitGroup", "episodeId", "counterfactualPairId"],
+  "cohesionRules": {
+    "keepCounterfactualPairsTogether": true,
+    "keepEpisodesTogether": true
+  },
+  "templateFamilyIsolation": {
+    "preventTrainTestOverlap": true,
+    "familyKey": "familyId"
+  },
+  "distribution": {
+    "train": 0.6,
+    "valid": 0.15,
+    "test": 0.15,
+    "challenge": 0.1
+  }
+}

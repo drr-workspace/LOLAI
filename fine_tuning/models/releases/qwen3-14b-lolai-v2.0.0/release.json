@@ -1,0 +1,20 @@
+{
+  "releaseVersion": "2.0.0",
+  "status": "RELEASED",
+  "selectedCheckpoint": 2000,
+  "baseModel": "models/base/qwen3-14b-4bit",
+  "dataset": "datasets/releases/2.0.0",
+  "trainingType": "QLoRA",
+  "thinkingMode": "disabled",
+  "systemPromptVersion": "1.0.0",
+  "evaluation": {
+    "validation": "PASSED",
+    "test": "PASSED",
+    "challenge": "PASSED"
+  },
+  "artifacts": {
+    "adapter": "adapters.safetensors",
+    "adapterConfig": "adapter_config.json",
+    "checksums": "checksums.sha256"
+  }
+}

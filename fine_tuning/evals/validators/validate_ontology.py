@@ -8,10 +8,8 @@ from typing import Any, TypeAlias
 
 
 FINE_TUNING_ROOT = Path(__file__).resolve().parents[2]
-if str(FINE_TUNING_ROOT) not in sys.path:
-    sys.path.insert(0, str(FINE_TUNING_ROOT))
 
-from generators.ontology_registry import (  # noqa: E402
+from generators.ontology_registry import (
     OntologyError,
     OntologyRegistry,
 )

@@ -1,0 +1,23 @@
+{
+  "policyVersion": "1.0.0",
+  "ontologyVersion": "1.0.0",
+  "description": "Causal and structural deduplication rules for canonical scenarios.",
+  "causalSignatureFields": [
+    "input.task",
+    "input.context.completeness",
+    "input.context.freshnessSeconds",
+    "input.payload.candidateTypes",
+    "input.payload.teamFunctions",
+    "input.payload.threatPatterns",
+    "expectedOutput.decision",
+    "expectedOutput.primaryActionRank",
+    "expectedOutput.reasonCodes"
+  ],
+  "numericBuckets": {
+    "input.context.completeness": [0.0, 0.5, 0.7, 0.85, 1.0],
+    "input.context.freshnessSeconds": [0, 5, 15, 30, 60],
+    "candidateScoreMargin": [0.0, 0.05, 0.1, 0.2, 1.0]
+  },
+  "maximumExamplesPerSignature": 4,
+  "structuralSimilarityThreshold": 0.92
+}

@@ -1,0 +1,13 @@
+{
+  "policyVersion": "1.0.0",
+  "ontologyVersion": "1.0.0",
+  "description": "Manifest of versioned LOLAI generation and evaluation policies.",
+  "policies": [
+    {"id": "scoring", "file": "scoring-policy.json", "description": "Candidate scoring components and weights."},
+    {"id": "decision", "file": "decision-policy.json", "description": "Ordered refresh, suppression and show rules."},
+    {"id": "confidence", "file": "confidence-policy.json", "description": "Confidence factors and weights."},
+    {"id": "generation", "file": "generation-policy.json", "description": "Generation distributions, bounds and scenario targets."},
+    {"id": "deduplication", "file": "deduplication-policy.json", "description": "Causal signature and structural deduplication rules."},
+    {"id": "split", "file": "split-policy.json", "description": "Leakage-resistant grouped split rules."}
+  ]
+}

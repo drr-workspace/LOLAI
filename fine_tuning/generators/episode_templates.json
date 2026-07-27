@@ -1,0 +1,30 @@
+{
+  "templateVersion": "1.0.0",
+  "templates": [
+    {"templateId":"episode_vision_contest_basic","description":"Vision setup, unchanged suppression, completed vision and contest.","sequenceType":"VISION_CONTEST","task":"MACRO_PRIORITY","splitGroup":"episode_vision","elapsedSeconds":[0,5,9],"expectedDecisions":["SHOW","SUPPRESS","SHOW"]},
+    {"templateId":"episode_vision_contest_rotation","description":"Vision setup before a rotation contest.","sequenceType":"VISION_CONTEST","task":"MACRO_PRIORITY","splitGroup":"episode_vision","elapsedSeconds":[0,4,11],"expectedDecisions":["SHOW","SUPPRESS","SHOW"]},
+    {"templateId":"episode_vision_contest_delayed","description":"Vision setup with a delayed completion.","sequenceType":"VISION_CONTEST","task":"MACRO_PRIORITY","splitGroup":"episode_vision","elapsedSeconds":[0,8,14],"expectedDecisions":["SHOW","SUPPRESS","SHOW"]},
+    {"templateId":"episode_vision_contest_information","description":"Information-first setup followed by a contest.","sequenceType":"VISION_CONTEST","task":"MACRO_PRIORITY","splitGroup":"episode_vision","elapsedSeconds":[0,3,10],"expectedDecisions":["SHOW","SUPPRESS","SHOW"]},
+
+    {"templateId":"episode_itemization_threat_physical","description":"Itemization repeats until primary threat changes.","sequenceType":"ITEMIZATION_THREAT_CHANGE","task":"ITEMIZATION_DECISION","splitGroup":"episode_itemization","elapsedSeconds":[0,6,12],"expectedDecisions":["SHOW","SUPPRESS","SHOW"]},
+    {"templateId":"episode_itemization_threat_magic","description":"Stable inventory then a new primary threat.","sequenceType":"ITEMIZATION_THREAT_CHANGE","task":"ITEMIZATION_DECISION","splitGroup":"episode_itemization","elapsedSeconds":[0,4,9],"expectedDecisions":["SHOW","SUPPRESS","SHOW"]},
+    {"templateId":"episode_itemization_threat_layered","description":"Unchanged purchase advice followed by layered threat reprioritization.","sequenceType":"ITEMIZATION_THREAT_CHANGE","task":"ITEMIZATION_DECISION","splitGroup":"episode_itemization","elapsedSeconds":[0,7,15],"expectedDecisions":["SHOW","SUPPRESS","SHOW"]},
+
+    {"templateId":"episode_wave_safe_recall","description":"Safe positioning repeats until the wave enables recall.","sequenceType":"WAVE_POSITION_CHANGE","task":"MATCHUP_PLAN","splitGroup":"episode_wave","elapsedSeconds":[0,5,10],"expectedDecisions":["SHOW","SUPPRESS","SHOW"]},
+    {"templateId":"episode_wave_safe_push","description":"Safe positioning repeats until the wave enables push.","sequenceType":"WAVE_POSITION_CHANGE","task":"MATCHUP_PLAN","splitGroup":"episode_wave","elapsedSeconds":[0,4,8],"expectedDecisions":["SHOW","SUPPRESS","SHOW"]},
+    {"templateId":"episode_wave_bounce","description":"Stable wave suppression followed by a changed bounce state.","sequenceType":"WAVE_POSITION_CHANGE","task":"MATCHUP_PLAN","splitGroup":"episode_wave","elapsedSeconds":[0,6,13],"expectedDecisions":["SHOW","SUPPRESS","SHOW"]},
+
+    {"templateId":"episode_macro_conflict_objective","description":"Macro plan pauses for contradictory objective evidence.","sequenceType":"MACRO_CONTRADICTION","task":"MACRO_PRIORITY","splitGroup":"episode_macro_conflict","elapsedSeconds":[0,4,9],"expectedDecisions":["SHOW","REQUEST_REFRESH","SHOW"]},
+    {"templateId":"episode_macro_conflict_vision","description":"Macro plan pauses for contradictory vision evidence.","sequenceType":"MACRO_CONTRADICTION","task":"MACRO_PRIORITY","splitGroup":"episode_macro_conflict","elapsedSeconds":[0,3,8],"expectedDecisions":["SHOW","REQUEST_REFRESH","SHOW"]},
+    {"templateId":"episode_macro_conflict_numbers","description":"Macro plan pauses for contradictory numbers evidence.","sequenceType":"MACRO_CONTRADICTION","task":"MACRO_PRIORITY","splitGroup":"episode_macro_conflict","elapsedSeconds":[0,5,12],"expectedDecisions":["SHOW","REQUEST_REFRESH","SHOW"]},
+
+    {"templateId":"episode_refresh_missing_context","description":"Incomplete context remains incomplete, then reliable data arrives.","sequenceType":"REFRESH_RECOVERY","task":"THREAT_ASSESSMENT","splitGroup":"episode_refresh","elapsedSeconds":[0,3,7],"expectedDecisions":["REQUEST_REFRESH","REQUEST_REFRESH","SHOW"]},
+    {"templateId":"episode_refresh_missing_wave","description":"Missing wave state remains unresolved, then becomes reliable.","sequenceType":"REFRESH_RECOVERY","task":"MATCHUP_PLAN","splitGroup":"episode_refresh","elapsedSeconds":[0,4,9],"expectedDecisions":["REQUEST_REFRESH","REQUEST_REFRESH","SHOW"]},
+    {"templateId":"episode_refresh_missing_objective","description":"Missing objective context is refreshed before action.","sequenceType":"REFRESH_RECOVERY","task":"MACRO_PRIORITY","splitGroup":"episode_refresh","elapsedSeconds":[0,5,11],"expectedDecisions":["REQUEST_REFRESH","REQUEST_REFRESH","SHOW"]},
+    {"templateId":"episode_refresh_missing_roles","description":"Incomplete composition roles become available.","sequenceType":"REFRESH_RECOVERY","task":"COMPOSITION_PLAN","splitGroup":"episode_refresh","elapsedSeconds":[0,2,6],"expectedDecisions":["REQUEST_REFRESH","REQUEST_REFRESH","SHOW"]},
+
+    {"templateId":"episode_validity_expiry_short","description":"Advice is suppressed within validity and reevaluated after expiry.","sequenceType":"VALIDITY_EXPIRY","task":"COMPOSITION_PLAN","splitGroup":"episode_validity","elapsedSeconds":[0,5,35],"expectedDecisions":["SHOW","SUPPRESS","SHOW"]},
+    {"templateId":"episode_validity_expiry_macro","description":"Macro advice becomes eligible after its validity period.","sequenceType":"VALIDITY_EXPIRY","task":"MACRO_PRIORITY","splitGroup":"episode_validity","elapsedSeconds":[0,8,38],"expectedDecisions":["SHOW","SUPPRESS","SHOW"]},
+    {"templateId":"episode_validity_expiry_itemization","description":"Itemization advice is reevaluated after aging out.","sequenceType":"VALIDITY_EXPIRY","task":"ITEMIZATION_DECISION","splitGroup":"episode_validity","elapsedSeconds":[0,6,36],"expectedDecisions":["SHOW","SUPPRESS","SHOW"]}
+  ]
+}

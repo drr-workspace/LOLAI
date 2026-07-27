@@ -1,0 +1,165 @@
+{
+  "aggregate": {
+    "decisions": {
+      "REQUEST_REFRESH": 2538,
+      "SHOW": 8700,
+      "SUPPRESS": 3262
+    },
+    "examples": 14500,
+    "locales": {
+      "en-US": 8347,
+      "it-IT": 6153
+    },
+    "tasks": {
+      "ADVICE_SUPPRESSION": 2416,
+      "COMPOSITION_PLAN": 2417,
+      "ITEMIZATION_DECISION": 2417,
+      "MACRO_PRIORITY": 2417,
+      "MATCHUP_PLAN": 2417,
+      "THREAT_ASSESSMENT": 2416
+    }
+  },
+  "createdAt": "2026-07-30T00:00:00+00:00",
+  "datasetName": "LOLAI Advisor Invariant Strategic Dataset",
+  "datasetVersion": "2.0.0",
+  "format": {
+    "conversationFormat": "chat",
+    "encoding": "UTF-8",
+    "messageOrder": [
+      "system",
+      "user",
+      "assistant"
+    ],
+    "type": "JSONL"
+  },
+  "knowledgeBoundary": {
+    "excluded": [
+      "Champion, item and rune names",
+      "Patch identifiers and volatile statistics",
+      "Concrete cooldown and objective timers"
+    ],
+    "policy": "INVARIANT_ONLY"
+  },
+  "language": [
+    "it-IT",
+    "en-US"
+  ],
+  "limitations": [
+    "The labels encode deterministic policy assumptions.",
+    "Volatile game facts must be supplied by runtime evidence."
+  ],
+  "ontologyVersion": "1.0.0",
+  "purpose": "Fine-tuning di decisioni strategiche astratte, evidence-grounded e resistenti a conoscenza volatile.",
+  "schemaVersion": "1.0.0",
+  "splitPolicy": {
+    "challenge": "Adversarial evaluation only",
+    "leakageRule": "Families, episodes and counterfactual pairs remain cohesive.",
+    "test": "Final held-out evaluation",
+    "train": "Gradient updates",
+    "valid": "Model selection"
+  },
+  "splits": {
+    "challenge": {
+      "decisions": {
+        "REQUEST_REFRESH": 262,
+        "SHOW": 901,
+        "SUPPRESS": 337
+      },
+      "examples": 1500,
+      "filename": "challenge.jsonl",
+      "locales": {
+        "en-US": 745,
+        "it-IT": 755
+      },
+      "sha256": "e4c0db2fe3bcd4be4ece0e0a5cbca3d8efe54bd1b1878fd12b4f18ea4a1bd76f",
+      "sizeBytes": 4273663,
+      "tasks": {
+        "COMPOSITION_PLAN": 639,
+        "MATCHUP_PLAN": 861
+      }
+    },
+    "test": {
+      "decisions": {
+        "REQUEST_REFRESH": 263,
+        "SHOW": 897,
+        "SUPPRESS": 340
+      },
+      "examples": 1500,
+      "filename": "test.jsonl",
+      "locales": {
+        "en-US": 833,
+        "it-IT": 667
+      },
+      "sha256": "e92d382beabedf6d216f4d7aa1d6096a932afebc9f98531944315d20e022ed9e",
+      "sizeBytes": 4093060,
+      "tasks": {
+        "ADVICE_SUPPRESSION": 415,
+        "COMPOSITION_PLAN": 339,
+        "MACRO_PRIORITY": 341,
+        "MATCHUP_PLAN": 405
+      }
+    },
+    "train": {
+      "decisions": {
+        "REQUEST_REFRESH": 1753,
+        "SHOW": 6001,
+        "SUPPRESS": 2246
+      },
+      "examples": 10000,
+      "filename": "train.jsonl",
+      "locales": {
+        "en-US": 5570,
+        "it-IT": 4430
+      },
+      "sha256": "ff96e5d17385196850ba59b8e9bcc72704870b246a497e0adc1924de4908edb9",
+      "sizeBytes": 30071210,
+      "tasks": {
+        "ADVICE_SUPPRESSION": 1782,
+        "COMPOSITION_PLAN": 1439,
+        "ITEMIZATION_DECISION": 2090,
+        "MACRO_PRIORITY": 1526,
+        "MATCHUP_PLAN": 747,
+        "THREAT_ASSESSMENT": 2416
+      }
+    },
+    "valid": {
+      "decisions": {
+        "REQUEST_REFRESH": 260,
+        "SHOW": 901,
+        "SUPPRESS": 339
+      },
+      "examples": 1500,
+      "filename": "valid.jsonl",
+      "locales": {
+        "en-US": 1199,
+        "it-IT": 301
+      },
+      "sha256": "3529f454635623402c67344c6cb3c6ca01fa08de51f2094c4c93f7d7540ccaa5",
+      "sizeBytes": 4353035,
+      "tasks": {
+        "ADVICE_SUPPRESSION": 219,
+        "ITEMIZATION_DECISION": 327,
+        "MACRO_PRIORITY": 550,
+        "MATCHUP_PLAN": 404
+      }
+    }
+  },
+  "supportedDecisions": [
+    "SHOW",
+    "SUPPRESS",
+    "REQUEST_REFRESH"
+  ],
+  "supportedTasks": [
+    "ADVICE_SUPPRESSION",
+    "COMPOSITION_PLAN",
+    "ITEMIZATION_DECISION",
+    "MACRO_PRIORITY",
+    "MATCHUP_PLAN",
+    "THREAT_ASSESSMENT"
+  ],
+  "systemPrompt": {
+    "embeddedInEveryExample": true,
+    "mustMatchRuntimePrompt": true,
+    "sha256": "d038dd14e32bcc8badf8a3ebb6273597a4cc46f25a488ceaba22b1d17afbcb5a"
+  }
+}

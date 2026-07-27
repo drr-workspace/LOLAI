@@ -17,7 +17,7 @@ cd "$ROOT_DIR"
 
 VENV_DIR="${VENV_DIR:-.venv}"
 CONFIG_PATH="${CONFIG_PATH:-training/configs/qwen3-14b-qlora.yaml}"
-DATA_DIR="${DATA_DIR:-datasets/releases/1.0.0}"
+DATA_DIR="${DATA_DIR:-datasets/releases/2.0.0}"
 MODEL_DIR="${MODEL_DIR:-models/base/qwen3-14b-4bit}"
 VALIDATOR_PATH="${VALIDATOR_PATH:-evals/validators/validate_dataset.py}"
 LOG_ROOT="${LOG_ROOT:-training/logs}"
@@ -206,6 +206,8 @@ export PYTHONUNBUFFERED=1
 set +e
 mlx_lm.lora \
   --config "$CONFIG_PATH" \
+  --data "$DATA_DIR" \
+  --model "$MODEL_DIR" \
   2>&1 | tee -a "$FULL_LOG"
 TRAIN_EXIT=${PIPESTATUS[0]}
 set -e

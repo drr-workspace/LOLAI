@@ -1,0 +1,12 @@
+{
+  "runId": "20260725-023155",
+  "startedAt": "2026-07-25T00:31:55.086615+00:00",
+  "host": "Mac.home",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "machine": "arm64",
+  "pythonVersion": "Python 3.12.2",
+  "mlxLmExecutable": "/Users/raffaele.deraffaele/Documents/Repos/DRR/LOLAI/fine_tuning/.venv/bin/mlx_lm.lora",
+  "configPath": "training/configs/qwen3-14b-qlora.yaml",
+  "dataDirectory": "datasets/releases/1.0.0",
+  "modelDirectory": "models/base/qwen3-14b-4bit"
+}

@@ -1,0 +1,50 @@
+{
+  "build": {
+    "duplicatesRemoved": 10544,
+    "examples": {
+      "challenge": 1500,
+      "test": 1500,
+      "train": 10000,
+      "valid": 1500
+    },
+    "uniqueCausalSignatures": 13381
+  },
+  "createdAt": "2026-07-30T00:00:00+00:00",
+  "datasetVersion": "2.0.0",
+  "files": {
+    "buildReport": {
+      "filename": "build-report.json",
+      "sha256": "5df2ec695a5be54544c4526cf1d101b0e808437b0d3de693603b6ef001991e5c",
+      "sizeBytes": 911
+    },
+    "challenge": {
+      "filename": "challenge.jsonl",
+      "sha256": "e4c0db2fe3bcd4be4ece0e0a5cbca3d8efe54bd1b1878fd12b4f18ea4a1bd76f",
+      "sizeBytes": 4273663
+    },
+    "datasetCard": {
+      "filename": "dataset-card.json",
+      "sha256": "0ac77acf3588f51bd21fe96e4ae48375be90104b8e3f7e40d2109d3e573b5053",
+      "sizeBytes": 4147
+    },
+    "test": {
+      "filename": "test.jsonl",
+      "sha256": "e92d382beabedf6d216f4d7aa1d6096a932afebc9f98531944315d20e022ed9e",
+      "sizeBytes": 4093060
+    },
+    "train": {
+      "filename": "train.jsonl",
+      "sha256": "ff96e5d17385196850ba59b8e9bcc72704870b246a497e0adc1924de4908edb9",
+      "sizeBytes": 30071210
+    },
+    "valid": {
+      "filename": "valid.jsonl",
+      "sha256": "3529f454635623402c67344c6cb3c6ca01fa08de51f2094c4c93f7d7540ccaa5",
+      "sizeBytes": 4353035
+    }
+  },
+  "ontologyVersion": "1.0.0",
+  "reproducible": true,
+  "schemaVersion": "1.0.0",
+  "seed": 20260730
+}

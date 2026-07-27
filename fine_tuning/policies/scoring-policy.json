@@ -1,0 +1,20 @@
+{
+  "policyVersion": "1.0.0",
+  "ontologyVersion": "1.0.0",
+  "description": "Abstract, game-entity-independent components used to score candidate actions.",
+  "components": [
+    {"id": "primaryThreatCounter", "description": "How effectively the candidate mitigates the highest-priority abstract threat.", "direction": "REWARD", "weight": 0.18, "reasonCodes": ["COUNTERS_PRIMARY_THREAT"]},
+    {"id": "secondaryThreatCounter", "description": "How effectively the candidate mitigates relevant secondary threats.", "direction": "REWARD", "weight": 0.06, "reasonCodes": ["COUNTERS_PRIMARY_THREAT"]},
+    {"id": "supportsWinCondition", "description": "How strongly the candidate advances the primary abstract team plan.", "direction": "REWARD", "weight": 0.14, "reasonCodes": ["SUPPORTS_WIN_CONDITION"]},
+    {"id": "fillsMissingFunction", "description": "How strongly the candidate supplies a missing strategic function.", "direction": "REWARD", "weight": 0.12, "reasonCodes": ["FILLS_MISSING_FUNCTION"]},
+    {"id": "feasibility", "description": "How executable the candidate is in the observed context.", "direction": "REWARD", "weight": 0.14, "reasonCodes": ["IMPROVES_IMMEDIATE_FEASIBILITY"]},
+    {"id": "urgencyAlignment", "description": "How well the candidate's timing aligns with the current opportunity.", "direction": "REWARD", "weight": 0.08, "reasonCodes": ["WAVE_WINDOW", "OBJECTIVE_SETUP"]},
+    {"id": "opportunityCost", "description": "Value lost by committing to the candidate instead of alternatives.", "direction": "PENALTY", "weight": 0.08, "reasonCodes": ["OPPORTUNITY_COST_TOO_HIGH"]},
+    {"id": "redundancy", "description": "Degree to which the candidate duplicates already-covered functions.", "direction": "PENALTY", "weight": 0.05, "reasonCodes": ["TEAM_FUNCTION_ALREADY_COVERED", "AVOIDS_REDUNDANT_FUNCTION"]},
+    {"id": "executionBurden", "description": "Coordination and execution difficulty imposed by the candidate.", "direction": "PENALTY", "weight": 0.05, "reasonCodes": ["ACTION_NOT_FEASIBLE"]},
+    {"id": "staleEvidencePenalty", "description": "Penalty for relying on evidence older than the context can tolerate.", "direction": "PENALTY", "weight": 0.05, "reasonCodes": ["STALE_CONTEXT"]},
+    {"id": "conflictingEvidencePenalty", "description": "Penalty for unresolved contradictions among relevant evidence.", "direction": "PENALTY", "weight": 0.05, "reasonCodes": ["CONFLICTING_EVIDENCE"]}
+  ],
+  "inputRange": {"minimum": 0.0, "maximum": 1.0},
+  "outputRange": {"minimum": -1.0, "maximum": 1.0}
+}

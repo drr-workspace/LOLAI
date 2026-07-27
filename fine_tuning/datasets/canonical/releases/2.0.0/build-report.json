@@ -1,0 +1,37 @@
+{
+  "counterfactualPercentage": 24.993,
+  "counts": {
+    "challenge": 1500,
+    "test": 1500,
+    "train": 10000,
+    "valid": 1500
+  },
+  "decisions": {
+    "REQUEST_REFRESH": 2538,
+    "SHOW": 8700,
+    "SUPPRESS": 3262
+  },
+  "duplicatesRemoved": 10544,
+  "families": 153,
+  "reviewedPercentage": 0.0,
+  "sourceTypes": {
+    "ADVERSARIAL": 725,
+    "COUNTERFACTUAL": 3624,
+    "SYNTHETIC": 7976,
+    "TEMPORAL": 2175
+  },
+  "tasks": {
+    "ADVICE_SUPPRESSION": 2416,
+    "COMPOSITION_PLAN": 2417,
+    "ITEMIZATION_DECISION": 2417,
+    "MACRO_PRIORITY": 2417,
+    "MATCHUP_PLAN": 2417,
+    "THREAT_ASSESSMENT": 2416
+  },
+  "temporalPercentage": 15.0,
+  "uniqueCausalSignatures": 13381,
+  "warnings": [
+    "sorgente realistica assente: /Users/raffaele.deraffaele/Documents/Repos/DRR/LOLAI/fine_tuning/datasets/canonical/approved-realistic.jsonl",
+    "quota realistica ridistribuita a SYNTHETIC: 5800"
+  ]
+}

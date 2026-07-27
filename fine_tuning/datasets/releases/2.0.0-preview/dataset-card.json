@@ -1,0 +1,164 @@
+{
+  "aggregate": {
+    "decisions": {
+      "REQUEST_REFRESH": 65,
+      "SHOW": 121,
+      "SUPPRESS": 39
+    },
+    "examples": 225,
+    "locales": {
+      "en-US": 115,
+      "it-IT": 110
+    },
+    "tasks": {
+      "ADVICE_SUPPRESSION": 23,
+      "COMPOSITION_PLAN": 40,
+      "ITEMIZATION_DECISION": 41,
+      "MACRO_PRIORITY": 40,
+      "MATCHUP_PLAN": 45,
+      "THREAT_ASSESSMENT": 36
+    }
+  },
+  "createdAt": "2026-07-30T00:00:00+00:00",
+  "datasetName": "LOLAI Advisor Invariant Strategic Dataset",
+  "datasetVersion": "2.0.0",
+  "format": {
+    "conversationFormat": "chat",
+    "encoding": "UTF-8",
+    "messageOrder": [
+      "system",
+      "user",
+      "assistant"
+    ],
+    "type": "JSONL"
+  },
+  "knowledgeBoundary": {
+    "excluded": [
+      "Champion, item and rune names",
+      "Patch identifiers and volatile statistics",
+      "Concrete cooldown and objective timers"
+    ],
+    "policy": "INVARIANT_ONLY"
+  },
+  "language": [
+    "it-IT",
+    "en-US"
+  ],
+  "limitations": [
+    "The labels encode deterministic policy assumptions.",
+    "Volatile game facts must be supplied by runtime evidence."
+  ],
+  "ontologyVersion": "1.0.0",
+  "purpose": "Fine-tuning di decisioni strategiche astratte, evidence-grounded e resistenti a conoscenza volatile.",
+  "schemaVersion": "1.0.0",
+  "splitPolicy": {
+    "challenge": "Adversarial evaluation only",
+    "leakageRule": "Families, episodes and counterfactual pairs remain cohesive.",
+    "test": "Final held-out evaluation",
+    "train": "Gradient updates",
+    "valid": "Model selection"
+  },
+  "splits": {
+    "challenge": {
+      "decisions": {
+        "REQUEST_REFRESH": 4,
+        "SHOW": 14,
+        "SUPPRESS": 5
+      },
+      "examples": 23,
+      "filename": "challenge.jsonl",
+      "locales": {
+        "en-US": 10,
+        "it-IT": 13
+      },
+      "sha256": "a17cd365c37b4c8a1bee42dd8a661e238ab5641c1a85a0944e29096021ce6304",
+      "sizeBytes": 74541,
+      "tasks": {
+        "ITEMIZATION_DECISION": 9,
+        "MACRO_PRIORITY": 1,
+        "MATCHUP_PLAN": 13
+      }
+    },
+    "test": {
+      "decisions": {
+        "REQUEST_REFRESH": 6,
+        "SHOW": 15,
+        "SUPPRESS": 2
+      },
+      "examples": 23,
+      "filename": "test.jsonl",
+      "locales": {
+        "en-US": 7,
+        "it-IT": 16
+      },
+      "sha256": "faddf5089697e486642cf41230aa57c0efd3b4a5714650df3113658392c38961",
+      "sizeBytes": 67553,
+      "tasks": {
+        "ITEMIZATION_DECISION": 7,
+        "MACRO_PRIORITY": 1,
+        "MATCHUP_PLAN": 15
+      }
+    },
+    "train": {
+      "decisions": {
+        "REQUEST_REFRESH": 49,
+        "SHOW": 77,
+        "SUPPRESS": 30
+      },
+      "examples": 156,
+      "filename": "train.jsonl",
+      "locales": {
+        "en-US": 77,
+        "it-IT": 79
+      },
+      "sha256": "a1a9a6ecfe7054e43bdc311efcfd47762f38629657ecf7f223cc0a64d6bf9007",
+      "sizeBytes": 455471,
+      "tasks": {
+        "ADVICE_SUPPRESSION": 23,
+        "COMPOSITION_PLAN": 20,
+        "ITEMIZATION_DECISION": 25,
+        "MACRO_PRIORITY": 38,
+        "MATCHUP_PLAN": 16,
+        "THREAT_ASSESSMENT": 34
+      }
+    },
+    "valid": {
+      "decisions": {
+        "REQUEST_REFRESH": 6,
+        "SHOW": 15,
+        "SUPPRESS": 2
+      },
+      "examples": 23,
+      "filename": "valid.jsonl",
+      "locales": {
+        "en-US": 21,
+        "it-IT": 2
+      },
+      "sha256": "649b829bd23b36a099bd476dd446041003ba4891bd37d0374bdbc037367d7394",
+      "sizeBytes": 64813,
+      "tasks": {
+        "COMPOSITION_PLAN": 20,
+        "MATCHUP_PLAN": 1,
+        "THREAT_ASSESSMENT": 2
+      }
+    }
+  },
+  "supportedDecisions": [
+    "SHOW",
+    "SUPPRESS",
+    "REQUEST_REFRESH"
+  ],
+  "supportedTasks": [
+    "ADVICE_SUPPRESSION",
+    "COMPOSITION_PLAN",
+    "ITEMIZATION_DECISION",
+    "MACRO_PRIORITY",
+    "MATCHUP_PLAN",
+    "THREAT_ASSESSMENT"
+  ],
+  "systemPrompt": {
+    "embeddedInEveryExample": true,
+    "mustMatchRuntimePrompt": true,
+    "sha256": "d038dd14e32bcc8badf8a3ebb6273597a4cc46f25a488ceaba22b1d17afbcb5a"
+  }
+}

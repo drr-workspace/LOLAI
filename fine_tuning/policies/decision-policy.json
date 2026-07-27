@@ -1,0 +1,37 @@
+{
+  "policyVersion": "1.0.0",
+  "ontologyVersion": "1.0.0",
+  "description": "Ordered abstention and delivery policy evaluated before choosing an advisor decision.",
+  "precedence": [
+    {
+      "rank": 1,
+      "decision": "REQUEST_REFRESH",
+      "description": "Refresh takes precedence when required context is stale, incomplete, contradictory or unreliable.",
+      "conditionKeys": ["staleRequiredContext", "incompleteContext", "contradictoryEvidence", "unreliableEvidence"],
+      "reasonCodes": ["STALE_CONTEXT", "INSUFFICIENT_CONTEXT", "CONFLICTING_EVIDENCE"]
+    },
+    {
+      "rank": 2,
+      "decision": "SUPPRESS",
+      "description": "Suppress when no meaningful advantage exists, equivalent advice was shown recently or action value is too low.",
+      "conditionKeys": ["noMeaningfulAdvantage", "recentlyAdvised", "lowActionValue"],
+      "reasonCodes": ["NO_MEANINGFUL_ADVANTAGE", "RECENTLY_ADVISED", "LOW_ACTION_VALUE"]
+    },
+    {
+      "rank": 3,
+      "decision": "SHOW",
+      "description": "Show only when a valid candidate has a meaningful score margin after higher-precedence checks pass.",
+      "conditionKeys": ["validCandidate", "meaningfulScoreMargin"],
+      "reasonCodes": ["RELIABLE_RECENT_EVIDENCE"]
+    }
+  ],
+  "thresholds": {
+    "staleContextSeconds": 30,
+    "minimumCompleteness": 0.7,
+    "minimumEvidenceConfidence": 0.65,
+    "meaningfulScoreMargin": 0.08,
+    "recentlyAdvisedSeconds": 20,
+    "lowActionValueThreshold": 0.25,
+    "maximumContradictionCount": 1
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "policyVersion": "1.0.0",
+  "ontologyVersion": "1.0.0",
+  "description": "Weighted confidence model based only on abstract evidence and context quality.",
+  "factors": [
+    {"id": "evidenceQuality", "description": "Aggregate reliability of evidence used by the decision.", "direction": "POSITIVE", "weight": 0.28},
+    {"id": "evidenceFreshness", "description": "Normalized recency of evidence used by the decision.", "direction": "POSITIVE", "weight": 0.18},
+    {"id": "contextCompleteness", "description": "Completeness of required decision context.", "direction": "POSITIVE", "weight": 0.18},
+    {"id": "candidateScoreMargin", "description": "Normalized score margin between the first and second candidates.", "direction": "POSITIVE", "weight": 0.16},
+    {"id": "conflictCount", "description": "Normalized number of unresolved evidence conflicts.", "direction": "NEGATIVE", "weight": 0.12},
+    {"id": "uncertainFieldCount", "description": "Normalized number of context fields marked uncertain.", "direction": "NEGATIVE", "weight": 0.08}
+  ],
+  "outputRange": {"minimum": 0.0, "maximum": 1.0},
+  "roundingDigits": 2
+}

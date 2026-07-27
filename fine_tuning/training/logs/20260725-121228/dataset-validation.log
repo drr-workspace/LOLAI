@@ -1,0 +1,8 @@
+VALIDAZIONE COMPLETATA
+- train: 2400 esempi, 2400 input unici, 2400 coppie uniche
+- valid: 600 esempi, 600 input unici, 600 coppie uniche
+- test: 600 esempi, 600 input unici, 600 coppie uniche
+- challenge: 600 esempi, 600 input unici, 600 coppie uniche
+Totale: 4200 esempi
+Nessun duplicato esatto tra gli split.
+Hash e conteggi coerenti con dataset-card.json.

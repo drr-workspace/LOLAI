@@ -1,0 +1,7 @@
+{
+  "jsonValidity": {"operator": "minimum", "value": 1.0},
+  "schemaConformance": {"operator": "minimum", "value": 1.0},
+  "inventedActionRate": {"operator": "maximum", "value": 0.0},
+  "inventedEvidenceRate": {"operator": "maximum", "value": 0.0},
+  "unsupportedClaimRate": {"operator": "maximum", "value": 0.01}
+}

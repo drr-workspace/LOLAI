@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "abstract-runtime-snapshot.schema.json",
+  "title": "LOLAI abstract runtime snapshot",
+  "description": "A runtime or human-annotated snapshot containing only abstract, invariant strategic concepts.",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {"$ref": "common.schema.json#/$defs/version"},
+    "snapshotId": {"$ref": "common.schema.json#/$defs/opaqueId"},
+    "task": {"$ref": "common.schema.json#/$defs/task"},
+    "outputLocale": {"$ref": "common.schema.json#/$defs/locale"},
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "sourceKind": {"type": "string", "enum": ["RUNTIME", "HUMAN_ANNOTATION"]},
+        "sourceId": {"$ref": "common.schema.json#/$defs/opaqueId"},
+        "capturedAt": {"type": "string", "format": "date-time"},
+        "collectorVersion": {"$ref": "common.schema.json#/$defs/version"}
+      },
+      "required": ["sourceKind", "sourceId", "capturedAt", "collectorVersion"],
+      "additionalProperties": false
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "observedAtGameSecond": {"$ref": "common.schema.json#/$defs/nonNegativeInteger"},
+        "freshnessSeconds": {"$ref": "common.schema.json#/$defs/nonNegativeInteger"},
+        "completeness": {"type": "number", "minimum": 0, "maximum": 100},
+        "uncertainFields": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/nonEmptyString"}, "uniqueItems": true},
+        "stateSignature": {"$ref": "common.schema.json#/$defs/nonEmptyString"}
+      },
+      "required": ["observedAtGameSecond", "freshnessSeconds", "completeness", "uncertainFields", "stateSignature"],
+      "additionalProperties": false
+    },
+    "team": {
+      "type": "object",
+      "properties": {
+        "allyFunctions": {"$ref": "common.schema.json#/$defs/stringList"},
+        "allyArchetypes": {"$ref": "common.schema.json#/$defs/stringList"},
+        "enemyFunctions": {"$ref": "common.schema.json#/$defs/stringList"},
+        "enemyArchetypes": {"$ref": "common.schema.json#/$defs/stringList"},
+        "missingFunctions": {"$ref": "common.schema.json#/$defs/stringList"},
+        "primaryWinCondition": {"$ref": "common.schema.json#/$defs/nonEmptyString"}
+      },
+      "required": ["allyFunctions", "allyArchetypes", "enemyFunctions", "enemyArchetypes", "missingFunctions", "primaryWinCondition"],
+      "additionalProperties": false
+    },
+    "threats": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "entityId": {"$ref": "common.schema.json#/$defs/opaqueId"},
+          "priority": {"type": "number", "minimum": 0, "maximum": 100},
+          "patterns": {"$ref": "common.schema.json#/$defs/stringList"},
+          "damageProfile": {
+            "type": "object",
+            "properties": {
+              "physical": {"type": "number", "minimum": 0},
+              "magic": {"type": "number", "minimum": 0},
+              "true": {"type": "number", "minimum": 0}
+            },
+            "required": ["physical", "magic", "true"],
+            "additionalProperties": false
+          },
+          "evidenceIds": {"$ref": "common.schema.json#/$defs/opaqueIdList"}
+        },
+        "required": ["entityId", "priority", "patterns", "damageProfile", "evidenceIds"],
+        "additionalProperties": false
+      }
+    },
+    "waveStates": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {"$ref": "common.schema.json#/$defs/opaqueId"},
+      "additionalProperties": {"$ref": "common.schema.json#/$defs/nonEmptyString"}
+    },
+    "objectiveUrgency": {"type": "number", "minimum": 0, "maximum": 100},
+    "visionConfidence": {"type": "number", "minimum": 0, "maximum": 100},
+    "resourceAvailabilityNormalized": {"type": "number", "minimum": 0, "maximum": 100},
+    "candidates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "actionId": {"$ref": "common.schema.json#/$defs/opaqueId"},
+          "type": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+          "effects": {"$ref": "common.schema.json#/$defs/stringList"},
+          "supportsFunctions": {"$ref": "common.schema.json#/$defs/stringList"},
+          "evidenceIds": {"$ref": "common.schema.json#/$defs/opaqueIdList"},
+          "counteredThreatIds": {"$ref": "common.schema.json#/$defs/opaqueIdList"},
+          "winConditionTags": {"$ref": "common.schema.json#/$defs/stringList"},
+          "feasibility": {"type": "number", "minimum": 0, "maximum": 100},
+          "urgencyAlignment": {"type": "number", "minimum": 0, "maximum": 100},
+          "opportunityCost": {"type": "number", "minimum": 0, "maximum": 100},
+          "executionBurden": {"type": "number", "minimum": 0, "maximum": 100},
+          "equivalenceKey": {"$ref": "common.schema.json#/$defs/opaqueId"}
+        },
+        "required": ["actionId", "type", "effects", "supportsFunctions", "evidenceIds", "counteredThreatIds", "winConditionTags", "feasibility", "urgencyAlignment", "opportunityCost", "executionBurden", "equivalenceKey"],
+        "additionalProperties": false
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "evidenceId": {"$ref": "common.schema.json#/$defs/opaqueId"},
+          "type": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+          "confidence": {"type": "number", "minimum": 0, "maximum": 100},
+          "freshnessSeconds": {"$ref": "common.schema.json#/$defs/nonNegativeInteger"},
+          "conflictsWithEvidenceIds": {"$ref": "common.schema.json#/$defs/opaqueIdList"},
+          "fact": {"$ref": "common.schema.json#/$defs/safeJsonValue"}
+        },
+        "required": ["evidenceId", "type", "confidence", "freshnessSeconds", "conflictsWithEvidenceIds", "fact"],
+        "additionalProperties": false
+      }
+    },
+    "recentAdvice": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "actionId": {"$ref": "common.schema.json#/$defs/opaqueId"},
+          "equivalenceKey": {"$ref": "common.schema.json#/$defs/opaqueId"},
+          "category": {"$ref": "common.schema.json#/$defs/task"},
+          "decision": {"type": "string", "enum": ["SHOW", "SUPPRESS", "REQUEST_REFRESH"]},
+          "ageSeconds": {"$ref": "common.schema.json#/$defs/nonNegativeInteger"},
+          "stateSignature": {"$ref": "common.schema.json#/$defs/nonEmptyString"},
+          "reasonCodes": {"$ref": "common.schema.json#/$defs/stringList"}
+        },
+        "required": ["actionId", "equivalenceKey", "category", "decision", "ageSeconds", "stateSignature", "reasonCodes"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["schemaVersion", "snapshotId", "task", "outputLocale", "provenance", "context", "team", "threats", "waveStates", "objectiveUrgency", "visionConfidence", "resourceAvailabilityNormalized", "candidates", "evidence", "recentAdvice"],
+  "propertyNames": {"$ref": "common.schema.json#/$defs/nonVolatilePropertyName"},
+  "additionalProperties": false
+}

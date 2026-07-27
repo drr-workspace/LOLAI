@@ -1,0 +1,126 @@
+{
+  "checks": {
+    "canonical": {
+      "errors": [],
+      "valid": true
+    },
+    "counterfactuals": {
+      "errors": [],
+      "valid": true
+    },
+    "episodes": {
+      "errors": [],
+      "valid": true
+    },
+    "release": {
+      "errors": [],
+      "splits": {
+        "challenge": {
+          "decisions": {
+            "REQUEST_REFRESH": 262,
+            "SHOW": 901,
+            "SUPPRESS": 337
+          },
+          "examples": 1500,
+          "locales": {
+            "en-US": 745,
+            "it-IT": 755
+          },
+          "systemPromptHashes": [
+            "d038dd14e32bcc8badf8a3ebb6273597a4cc46f25a488ceaba22b1d17afbcb5a"
+          ],
+          "tasks": {
+            "COMPOSITION_PLAN": 639,
+            "MATCHUP_PLAN": 861
+          },
+          "uniqueInputs": 1500,
+          "uniquePairs": 1500,
+          "uniqueRequestIds": 1500
+        },
+        "test": {
+          "decisions": {
+            "REQUEST_REFRESH": 263,
+            "SHOW": 897,
+            "SUPPRESS": 340
+          },
+          "examples": 1500,
+          "locales": {
+            "en-US": 833,
+            "it-IT": 667
+          },
+          "systemPromptHashes": [
+            "d038dd14e32bcc8badf8a3ebb6273597a4cc46f25a488ceaba22b1d17afbcb5a"
+          ],
+          "tasks": {
+            "ADVICE_SUPPRESSION": 415,
+            "COMPOSITION_PLAN": 339,
+            "MACRO_PRIORITY": 341,
+            "MATCHUP_PLAN": 405
+          },
+          "uniqueInputs": 1500,
+          "uniquePairs": 1500,
+          "uniqueRequestIds": 1500
+        },
+        "train": {
+          "decisions": {
+            "REQUEST_REFRESH": 1753,
+            "SHOW": 6001,
+            "SUPPRESS": 2246
+          },
+          "examples": 10000,
+          "locales": {
+            "en-US": 5570,
+            "it-IT": 4430
+          },
+          "systemPromptHashes": [
+            "d038dd14e32bcc8badf8a3ebb6273597a4cc46f25a488ceaba22b1d17afbcb5a"
+          ],
+          "tasks": {
+            "ADVICE_SUPPRESSION": 1782,
+            "COMPOSITION_PLAN": 1439,
+            "ITEMIZATION_DECISION": 2090,
+            "MACRO_PRIORITY": 1526,
+            "MATCHUP_PLAN": 747,
+            "THREAT_ASSESSMENT": 2416
+          },
+          "uniqueInputs": 10000,
+          "uniquePairs": 10000,
+          "uniqueRequestIds": 10000
+        },
+        "valid": {
+          "decisions": {
+            "REQUEST_REFRESH": 260,
+            "SHOW": 901,
+            "SUPPRESS": 339
+          },
+          "examples": 1500,
+          "locales": {
+            "en-US": 1199,
+            "it-IT": 301
+          },
+          "systemPromptHashes": [
+            "d038dd14e32bcc8badf8a3ebb6273597a4cc46f25a488ceaba22b1d17afbcb5a"
+          ],
+          "tasks": {
+            "ADVICE_SUPPRESSION": 219,
+            "ITEMIZATION_DECISION": 327,
+            "MACRO_PRIORITY": 550,
+            "MATCHUP_PLAN": 404
+          },
+          "uniqueInputs": 1500,
+          "uniquePairs": 1500,
+          "uniqueRequestIds": 1500
+        }
+      },
+      "valid": true
+    },
+    "splitLeakage": {
+      "errors": [],
+      "valid": true
+    }
+  },
+  "datasetVersion": "2.0.0",
+  "errorCount": 0,
+  "errors": [],
+  "valid": true
+}
